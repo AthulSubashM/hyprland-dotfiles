@@ -1,0 +1,38 @@
+{
+    "label" : "lock",
+    "text" : "Lock",
+    "action" : "hyprlock",
+    "keybind" : "l"
+},
+{
+    "label" : "reboot",
+    "text" : "Restart",
+    "action" : "systemctl reboot || loginctl reboot",
+    "keybind" : "r"
+},
+{
+    "label" : "logout",
+    "text" : "Logout",
+    "action" : "pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER",
+    "keybind" : "e"
+},
+{
+    "label" : "shutdown",
+    "text" : "Shutdown",
+    "action" : "systemctl poweroff || loginctl poweroff",
+    "keybind" : "s"
+},
+{
+    "label" : "hibernate",
+    "text" : "Hibernate",
+    "action" : "systemctl hibernate || loginctl hibernate",
+    "keybind" : "h"
+},
+{
+    "label" : "pause",
+    "text" : "Pause",
+    "action" : "systemctl reboot || loginctl reboot",
+    "keybind" : "p"
+}
+    
+
