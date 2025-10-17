@@ -105,12 +105,12 @@
           "update-command": "~/.config/hypr/scripts/hyprsunset_status.sh"
         },
         {
-          "label": "",
+          "label": "v",
           "command": "kitty bash -i -c 'Settings'"
         },
         {
           "label": "",
-          "command": "mousepad ~/hyprtodo.txt"
+          "command": "kitty -e nvim ~/Documents/hyprtodo.md"
         },
         {
           "label": "",
