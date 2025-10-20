@@ -2,7 +2,13 @@
   "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
-  "modules-left": ["custom/notification", "clock", "tray", "mpris"],
+  "modules-left": [
+    "custom/notification",
+    "clock",
+    "custom/terminal",
+    "tray",
+    "mpris",
+  ],
   // "modules-center": ["hyprland/workspaces"],
   "modules-right": ["group/expand", "pulseaudio", "battery", "custom/power"],
 
@@ -103,8 +109,8 @@
     "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_battery_percentage}%",
-    "on-click-right": "~/.config/waybar/scripts/toggle-bluetooth-gui.sh",
-    "on-click": "~/.config/hypr/scripts/toggle-bluetooth.sh",
+    "on-click": "~/.config/waybar/scripts/toggle-bluetooth-gui.sh",
+    "on-click-right": "~/.config/hypr/scripts/toggle-bluetooth.sh",
   },
   "battery": {
     "interval": 30,
@@ -121,8 +127,7 @@
     "format-alt": "{capacity}% {icon}",
     "format-icons": ["", "", "", "", "", ""],
     "events": {
-                      "on-discharging-critical": "notify-send -u critical -t 5000 'Battery Critical!' 'Your battery level is low.'",
-
+      "on-discharging-critical": "notify-send -u critical -t 5000 'Battery Critical!' 'Your battery level is low.'",
     },
   },
   // "custom/pacman": {
@@ -204,10 +209,16 @@
       "alsa_output.usb-Razer_Razer_USB_Sound_Card_00000000-00.analog-stereo": "",
     },
     "on-click": "~/.config/hypr/scripts/toggle-pavucontrol.sh",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
   },
   "custom/power": {
     "format": "  ",
     "tooltip-format": "Power Options",
     "on-click": "wlogout",
+  },
+  "custom/terminal": {
+    "format": "",
+    "tooltip-format": "Open Terminal",
+    "on-click": "kitty -d ~",
   },
 }

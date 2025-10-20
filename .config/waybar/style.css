@@ -1,11 +1,13 @@
 @import url("../../.cache/wal/colors-waybar.css");
 
 * {
-  font-size: 15px;
-  font-family: "Noto Sans";
+  font-family:
+    "JetBrainsMono Nerd Font", "CodeNewRoman Nerd Font Propo",
+    "Symbols Nerd Font", "Nerd Font", sans-serif;
   font-weight: 600;
   font-size: 11pt;
 }
+
 window#waybar {
   all: unset;
 }
@@ -37,7 +39,7 @@ tooltip {
 }
 
 #custom-notification {
-  padding: 0px 5px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
   color: @color7;
 }
@@ -52,7 +54,7 @@ tooltip {
   color: @color7;
 }
 #workspaces {
-  padding: 0px 5px;
+  padding: 0px 5px; /* Adjust as needed */
 }
 #workspaces button {
   all: unset;
@@ -88,12 +90,12 @@ tooltip {
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 #bluetooth {
-  padding: 0px 5px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
   color: @color7;
 }
 #network {
-  padding: 0px 5px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
   color: @color7;
 }
@@ -108,7 +110,7 @@ Stages:
 **************************************************************/
 
 #battery {
-  padding: 0px 5px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
   color: #26a65b;
 }
@@ -135,11 +137,9 @@ Stages:
   animation-direction: alternate;
 }
 #group-expand {
-  padding: 0px 5px;
   transition: all 0.3s ease;
 }
 #custom-expand {
-  padding: 0px 5px;
   color: alpha(@foreground, 0.2);
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease;
@@ -149,12 +149,12 @@ Stages:
   text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
 }
 #custom-colorpicker {
-  padding: 0px 5px;
+  padding: 0px 10px;
 }
 #cpu,
 #memory,
 #temperature {
-  padding: 0px 5px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
   color: @color7;
 }
@@ -163,7 +163,7 @@ Stages:
   text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
 }
 #tray {
-  padding: 0px 5px;
+  padding: 0px 10px;
   transition: all 0.3s ease;
 }
 #tray menu * {
@@ -177,12 +177,14 @@ Stages:
 }
 
 #pulseaudio {
+  padding: 0px 5px;
 }
 
 #pulseaudio.muted {
 }
 
 #custom-power {
+  padding: 0px 5px;
 }
 
 #clock:hover,
@@ -198,11 +200,6 @@ Stages:
 #pulseaudio:hover {
   transition: all 0.3s ease;
   color: @color9;
-}
-
-/* Update the font for the entire bar or specifically for the custom module */
-* {
-font-family: "JetBrainsMono Nerd Font", "CodeNewRoman Nerd Font Propo", "Symbols Nerd Font", "Nerd Font", sans-serif;
 }
 
 /* Style for the custom workspaces module */
@@ -221,7 +218,6 @@ font-family: "JetBrainsMono Nerd Font", "CodeNewRoman Nerd Font Propo", "Symbols
 }
 
 #mpris {
-  margin-left: 10px;
   padding-right: 5px;
 }
 
@@ -265,4 +261,7 @@ font-family: "JetBrainsMono Nerd Font", "CodeNewRoman Nerd Font Propo", "Symbols
 
 #workspaces button.urgent {
   background-color: @urgent-color;
+}
+#custom-terminal {
+  padding: 0 10px 0 5px;
 }

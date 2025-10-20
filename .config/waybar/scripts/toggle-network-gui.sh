@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WINDOW_CLASS="nm-connection-editor"
+WINDOW_CLASS="nmtui-float"
 
 # Check if the window is currently open
 if hyprctl clients -j | jq -e ".[] | select(.class == \"$WINDOW_CLASS\")" > /dev/null; then
@@ -8,5 +8,5 @@ if hyprctl clients -j | jq -e ".[] | select(.class == \"$WINDOW_CLASS\")" > /dev
     hyprctl dispatch killwindow class:$WINDOW_CLASS
 else
     # If not open, launch the application
-    nm-connection-editor
+    kitty --class nmtui-float -e nmtui
 fi
