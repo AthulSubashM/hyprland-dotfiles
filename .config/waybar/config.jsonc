@@ -43,7 +43,7 @@
       "update-active-window": true,
       "format": "{icon}",
       "icon-size": 18,
-      "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}",
+      "on-click": "${SCRIPTS}/focus-window.sh {address} {button}",
     },
   },
 
