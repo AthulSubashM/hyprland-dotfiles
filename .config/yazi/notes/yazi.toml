@@ -1,0 +1,13 @@
+[mgr]
+ratio = [0,2,3]
+sort_by = "mtime"
+sort_reverse = true
+sort_dir_first = false
+show_symlink = false
+title_format = ""
+
+[opener]
+edit = [
+{ run = "alacritty -T \"$(basename \"$@\")\" -e nvim \"$@\"", orphan = true}
+]
+

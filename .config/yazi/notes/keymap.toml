@@ -1,0 +1,5 @@
+[mgr]
+prepend_keymap = [
+{ on = ["<ENTER>"], run = ["open", "quit"], desc = "quit after openning"},
+{ on = "<Esc>", run = "quit", desc = "quit"}
+]
