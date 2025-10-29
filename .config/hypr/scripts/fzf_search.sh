@@ -12,7 +12,7 @@ colors=$"--color='bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8' \
 
 #    - The output of fzf is REDIRECTED (>) directly into the pipe.
 alacritty --title "FZF_Search" -e sh -c "
-  find \$HOME -type f 2>/dev/null | \
+  find \$HOME /usr /etc -type f 2>/dev/null | \
     fzf --prompt='Open File > ' \
       $colors \
       --reverse --margin 4% \
