@@ -2,9 +2,9 @@
   "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
-  "modules-left": ["group/left", "mpris"],
+  "modules-left": ["group/left", "hyprland/window"],
   // "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["group/expand", "pulseaudio", "battery", "custom/power"],
+  "modules-right": ["mpris", "group/right"],
 
   "modules-center": ["hyprland/workspaces"],
 
@@ -23,10 +23,7 @@
       "Playing": "  ",
       "Paused": "  ",
     },
-    "max-length": 40,
-    "scrolling": true, // enable marquee scrolling
-    "scrolling-speed": 0.05, // lower = slower, higher = faster
-    "scrolling-delay": 2, // pause before starting to scroll (seconds)
+    "max-length": 50,
   },
 
   "hyprland/workspaces": {
@@ -36,9 +33,14 @@
       "enable": true,
       "update-active-window": true,
       "format": "{icon}",
-      "icon-size": 18,
-      "on-click": "${SCRIPTS}/focus-window.sh {address} {button}",
+      "icon-size": 16,
+      "on-click": "activate",
     },
+  },
+
+  "hyprland/window": {
+    "format": "{class}: {title}",
+    "max-length": 60,
   },
 
   // "custom/workspaces": {
@@ -62,6 +64,10 @@
   "group/left": {
     "orientation": "horizontal",
     "modules": ["custom/notification", "clock", "custom/terminal", "tray"],
+  },
+  "group/right": {
+    "orientation": "horizontal",
+    "modules": ["group/expand", "pulseaudio", "battery", "custom/power"],
   },
 
   "custom/notification": {
