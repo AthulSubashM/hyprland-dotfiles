@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Get the number of unread notifications
-COUNT=$(swaync-client -c)
-
+COUNT=$(makoctl history | grep -c '^Notification')
 
 # Check the count and print the appropriate icon
 if [ "$COUNT" -gt 0 ]; then
-    echo "$COUNT 󰂚"
+  echo "$COUNT 󰂚"
 else
-    echo "󰎟"
+  echo "󰎟"
 fi
 
 exit 0
+

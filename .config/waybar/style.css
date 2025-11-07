@@ -2,8 +2,8 @@
 
 * {
   font-family:
-    "JetBrainsMono Nerd Font", "CodeNewRoman Nerd Font Propo",
-    "Symbols Nerd Font", "Nerd Font", sans-serif;
+    "Noto Sans Medium", "CodeNewRoman Nerd Font Propo", "Symbols Nerd Font",
+    "Nerd Font", sans-serif;
   font-weight: 600;
   font-size: 11pt;
 }
@@ -138,6 +138,7 @@ Stages:
 }
 #group-expand {
   transition: all 0.3s ease;
+  padding: 2px;
 }
 #custom-expand {
   color: alpha(@foreground, 0.2);
@@ -242,8 +243,6 @@ Stages:
 #workspaces .taskbar-window {
   border-top: 1px solid transparent;
   font-weight: normal;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 #workspaces button.visible .taskbar-window,
@@ -251,12 +250,16 @@ Stages:
   border-color: white;
 }
 
-#workspaces .taskbar-window.active {
-  background-color: rgba(255, 255, 255, 0.15);
+#workspaces image {
+  -gtk-icon-transform: scale(0.8);
+}
+
+#workspaces .taskbar-window.active image {
+  -gtk-icon-transform: scale(1);
 }
 
 #workspaces .taskbar-window image {
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 #workspaces button.urgent {
