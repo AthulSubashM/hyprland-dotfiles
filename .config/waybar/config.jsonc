@@ -27,19 +27,14 @@
   },
 
   "hyprland/workspaces": {
-    "format": "{windows}",
+    "format": "{name}",
     "format-window-separator": "",
-    "workspace-taskbar": {
-      "enable": true,
-      "update-active-window": true,
-      "format": "{icon}",
-      "icon-size": 16,
-      "on-click": "activate",
-    },
   },
 
   "hyprland/window": {
-    "format": "{class}: {title}",
+    "format": "{title}",
+    "icon-size": 16,
+    "icon": true,
     "max-length": 60,
   },
 

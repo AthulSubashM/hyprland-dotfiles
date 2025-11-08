@@ -6,11 +6,9 @@
     "Nerd Font", sans-serif;
   font-weight: 600;
   font-size: 11pt;
+  background: transparent;
 }
 
-window#waybar {
-  all: unset;
-}
 #left {
   padding: 7px;
   background: alpha(@background, 0.6);
@@ -19,17 +17,13 @@ window#waybar {
 }
 
 .modules-left {
-  margin: 5 0 0 5;
+  margin: 5px 0 0 5px;
 }
 .modules-center {
-  padding: 7px;
-  margin: 5 0 0 0;
-  border-radius: 10px;
-  background: alpha(@background, 0.6);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  margin: 5px 0 0 0;
 }
 .modules-right {
-  margin: 5 5 0 0;
+  margin: 5px 5px 0 0;
 }
 #right {
   padding: 7px;
@@ -52,52 +46,12 @@ tooltip {
   color: @color7;
   transition: all 0.3s ease;
 }
-#custom-pacman {
-  padding: 0px 5px;
-  transition: all 0.3s ease;
-  color: @color7;
-}
-#workspaces {
-  padding: 0px 5px; /* Adjust as needed */
-}
-#workspaces button {
-  all: unset;
-  padding: 0px 5px;
-  color: alpha(@color9, 0.4);
-  transition: all 0.2s ease;
-}
-#workspaces button:hover {
-  color: rgba(0, 0, 0, 0);
-  border: none;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
-  transition: all 1s ease;
-}
-#workspaces button.active {
-  color: @color9;
-  border: none;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-}
-#workspaces button.empty {
-  color: rgba(0, 0, 0, 0);
-  border: none;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
-}
-#workspaces button.empty:hover {
-  color: rgba(0, 0, 0, 0);
-  border: none;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
-  transition: all 1s ease;
-}
-#workspaces button.empty.active {
-  color: @color9;
-  border: none;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-}
 #bluetooth {
   padding: 0px 10px;
   transition: all 0.3s ease;
   color: @color7;
 }
+
 #network {
   padding: 0px 10px;
   transition: all 0.3s ease;
@@ -145,12 +99,12 @@ Stages:
   padding: 2px;
 }
 #custom-expand {
-  color: alpha(@foreground, 0.2);
+  color: alpha(@foreground, 0.8);
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease;
 }
 #custom-expand:hover {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
   text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
 }
 #custom-colorpicker {
@@ -164,7 +118,7 @@ Stages:
   color: @color7;
 }
 #custom-endpoint {
-  color: transparent;
+  color: alpha(@foreground, 0.8);
   text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
 }
 #tray {
@@ -207,21 +161,6 @@ Stages:
   color: @color9;
 }
 
-/* Style for the custom workspaces module */
-#custom-workspaces {
-  padding: 0 10px; /* Adjust as needed */
-}
-
-/* Style for individual workspaces */
-#custom-workspaces button {
-  font-size: 1.2em;
-}
-
-/* Style for the active workspace icon */
-#custom-workspaces button.active {
-  color: #88c0d0; /* Example active color */
-}
-
 #mpris {
   padding: 0 10px;
   margin-right: 5px;
@@ -237,50 +176,29 @@ Stages:
   background: alpha(@background, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
+window#waybar.empty #window {
+  background: none;
+  padding: 0;
+}
 
 #workspaces button {
-  font-family: "Cantarell";
-  font-weight: bold;
-  background-color: transparent;
   color: #ffffff;
-  box-shadow: none;
-  text-shadow: none;
-  padding: 0px;
-  border-radius: 0;
-  padding-left: 5px;
-  padding-right: 2px;
+  border-radius: 10px;
+  padding: 7px;
+  margin: 0 2px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+#workspaces button.active {
+  background: alpha(@color9, 0.6);
+}
+#workspce button:hover {
+  border: none;
+  background-color: alpha(@color9, 0.3);
 }
 
-#workspaces .workspace-label {
-  padding-left: 3px;
-  border-top: 1px solid transparent;
-}
-
-#workspaces .taskbar-window {
-  border-top: 1px solid transparent;
-  font-weight: normal;
-}
-
-#workspaces button.visible .taskbar-window,
-#workspaces button.visible .workspace-label {
-  border-color: white;
-}
-
-#workspaces image {
-  -gtk-icon-transform: scale(1);
-}
-
-#workspaces .taskbar-window.active image {
-  -gtk-icon-transform: scale(1.25);
-}
-
-#workspaces .taskbar-window image {
-  margin-top: 2px;
-}
-
-#workspaces button.urgent {
-  background-color: @urgent-color;
-}
 #custom-terminal {
   padding: 0 15px 0 5px;
 }
