@@ -10,8 +10,8 @@
 
   "mpris": {
     "format": "{artist} - {title}",
-    "format-playing": "{artist} - {title}  ",
-    "format-paused": "{artist} - {title}  ",
+    "format-playing": "  {artist} - {title}",
+    "format-paused": " {artist} - {title}",
     "player": "playerctld",
     "tooltip": true,
     "on-click": "playerctl play-pause",

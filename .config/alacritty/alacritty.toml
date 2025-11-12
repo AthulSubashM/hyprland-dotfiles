@@ -1,0 +1,8 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/catppuccin-mocha.toml"
+]
+
+[font]
+normal = {family = "Iosevka Nerd Font Mono", style = "regular"}
+size = 12

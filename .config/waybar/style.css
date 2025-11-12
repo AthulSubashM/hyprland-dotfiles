@@ -162,7 +162,7 @@ Stages:
 }
 
 #mpris {
-  padding: 0 10px;
+  padding: 0 15px;
   margin-right: 5px;
   border-radius: 10px;
   background: alpha(@background, 0.6);
