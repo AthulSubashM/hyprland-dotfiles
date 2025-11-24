@@ -18,6 +18,8 @@ alias ser='pacman -Ss'
 alias ins='sudo pacman -S'
 alias rem='sudo pacman -Rns'
 
+alias gimp='flatpak run org.gimp.GIMP'
+
 #force wayland app
 # --enable-features=UseOzonePlatform --ozone-platform=wayland
 
