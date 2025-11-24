@@ -2,7 +2,8 @@
 source "$HOME/.config/hypr/scripts/dmenu/calc_cursor_place.sh"
 calc_cursor_place
 
-OPTIONS="󰐥 Shutdown\n󰜉 Reboot\n󰤄 Hibernate\n󰤁 Suspend\n󰌾 Lock\n󰗽 Logout"
+# OPTIONS="󰐥 Shutdown\n󰜉 Reboot\n󰤄 Hibernate\n󰤁 Suspend\n󰌾 Lock\n󰗽 Logout\n Firmware"
+OPTIONS="󰐥 Shutdown\n󰜉 Reboot\n󰤄 Hibernate\n󰤁 Suspend\n󰗽 Firmware\n󰌾 Logout"
 
 # Use fuzzel to display the options and capture the choice
 CHOICE=$(
@@ -30,11 +31,14 @@ case "$CHOICE" in
 "󰤁 Suspend")
   systemctl suspend && hyprlock
   ;;
-"󰌾 Lock")
-  hyprlock
-  ;;
-"󰗽 Logout")
+# "󰌾 Lock")
+#   hyprlock
+#   ;;
+"󰌾 Logout")
   loginctl terminate-user "$USER"
+  ;;
+"󰗽 Firmware")
+  systemctl reboot --firmware
   ;;
 *)
   exit 0
