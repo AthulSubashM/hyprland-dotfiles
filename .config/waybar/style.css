@@ -60,11 +60,11 @@ tooltip {
 
 /*************************************************************
 Stages:
-    * low battery: red <20%
-    * warning battery: yellow <40%
-    * good battery: white <90%
-    * charging: green <90%
-    * charging full: white >90%
+    * low battery: red <30%
+    * warning battery: yellow <60%
+    * good battery: green <90%
+    * charging: white <90%
+    * charging full: green >90%
 **************************************************************/
 
 #battery {
@@ -79,7 +79,7 @@ Stages:
 }
 
 #battery.good {
-  color: @color7;
+  color: #26a65b;
 }
 
 #battery.warning {
