@@ -14,11 +14,12 @@ alias cx='chmod +x $(fzf)'
 
 alias upd='printf "\033[1;34mUpdating arch packages...\033[0m\n"; yay -Syu ; printf "\033[1;32mUpdating Flatpaks...\033[0m\n"; flatpak update -y ; printf "\033[1;36mAll updates complete!\033[0m\n"'
 alias plist='pacman -Qent'
-alias ser='pacman -Ss'
+alias srh='pacman -Ss'
 alias ins='sudo pacman -S'
-alias rem='sudo pacman -Rns'
+alias rmv='sudo pacman -Rns'
 
 alias gimp='flatpak run org.gimp.GIMP'
+alias office='onlyoffice-desktopeditors'
 
 #force wayland app
 # --enable-features=UseOzonePlatform --ozone-platform=wayland
