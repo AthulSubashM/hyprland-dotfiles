@@ -202,3 +202,10 @@ window#waybar.empty #window {
 #custom-terminal {
   padding: 0 15px 0 5px;
 }
+
+/* Single window */
+window#waybar.solo .modules-left,
+window#waybar.solo .modules-center,
+window#waybar.solo .modules-right {
+  margin-bottom: 5px;
+}
