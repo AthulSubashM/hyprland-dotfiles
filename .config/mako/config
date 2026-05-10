@@ -1,0 +1,10 @@
+include=~/.cache/wal/colors-mako
+
+max-history=100
+default-timeout=5000
+
+
+# Styles
+font=Open Sans 11
+
+border-radius=8
