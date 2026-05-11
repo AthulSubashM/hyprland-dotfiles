@@ -1,3 +1,5 @@
+Mod = "SUPER"
+
 require("~/.config/hypr/settings/keybinds/mouse.lua")
 require("~/.config/hypr/settings/keybinds/workspaces-binds.lua")
 require("~/.config/hypr/settings/keybinds/volume-binds.lua")
@@ -25,7 +27,6 @@ $shell = $editor .bashrc
 --------------------------
 --    SYSTEM CONTROLS   --
 --------------------------
-$mod = SUPER - Sets "Windows" key as main modifier
 
 bind = $mod, C, killactive,            
 bind = $mod SHIFT, C, forcekillactive,
