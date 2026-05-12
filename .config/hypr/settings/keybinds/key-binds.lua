@@ -1,150 +1,153 @@
 Mod = "SUPER"
 
-require("~/.config/hypr/settings/keybinds/mouse.lua")
-require("~/.config/hypr/settings/keybinds/workspaces-binds.lua")
-require("~/.config/hypr/settings/keybinds/volume-binds.lua")
-require("~/.config/hypr/settings/keybinds/screen-binds.lua")
+require("settings.keybinds.mouse")
+require("settings.keybinds.screen-binds")
+require("settings.keybinds.volume-binds")
+require("settings.keybinds.workspaces-binds")
 
 --------------------
 --    PROGRAMS    --
---------------------
-$terminal = kitty
-$terminal2 = alacritty
-$fileManager = $terminal -e yazi
-$GUIfileManager = thunar
-- $menu = wofi --show drun -n
-$menu = fuzzel
-$browser = firefox
-$browser2 = chromium
-$taskManager = $terminal2 -T btop -e btop
-- $notifications = swaync-client -t -sw
-$notifications = makoctl
-$editor = $terminal2 -e nvim
-$editor2 = antigravity
-$mail = $terminal -e aerc
-$shell = $editor .bashrc
+-------------------
+local terminal = "kitty"
+local terminal2 = "alacritty"
+
+local fileManager = terminal .. " -e yazi"
+local GUIfileManager = "thunar"
+-- local menu = "wofi --show drun -n
+local menu = "fuzzel"
+local browser = "firefox"
+local browser2 = "chromium"
+local taskManager = terminal2 .. " -T btop -e btop"
+-- local local notifications = "swaync-client -t -sw
+local notifications = "makoctl"
+local editor = terminal2 .. " -e nvim"
+local editor2 = "antigravity"
+local mail = terminal .. " -e aerc"
+local shell = editor .. " .bashrc"
 
 --------------------------
 --    SYSTEM CONTROLS   --
 --------------------------
+hl.bind(Mod .. "+C", hl.dsp.window.close())
+hl.bind(Mod .. "+SHIFT+C", hl.dsp.window.kill())
+hl.bind(Mod .. "+CTRL+C", hl.dsp.exec_cmd(" ~/.config/hypr/scripts/close_workspace.sh"))
 
-bind = $mod, C, killactive,            
-bind = $mod SHIFT, C, forcekillactive,
-bind = $mod CTRL, C, exec, ~/.config/hypr/scripts/close_workspace.sh
+hl.bind(Mod .. "+SHIFT+R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind("Caps_Lock", hl.dsp.exec_cmd("swayosd-client --caps-lock"))
+hl.bind("Num_Lock", hl.dsp.exec_cmd("swayosd-client --num-lock"))
 
-bind = $mod SHIFT, R, exec, hyprctl reload
-bind = ,Caps_Lock, exec, swayosd-client --caps-lock 
-bind = ,Num_Lock, exec, swayosd-client --num-lock   
-
-- Zoom in, out & reset
-bind = $mod CTRL, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')
-bind = $mod CTRL, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')
-bind = $mod CTRL, 0, exec, hyprctl -q keyword cursor:zoom_factor 1
-binde = $mod CTRL, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')
-binde = $mod CTRL, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')
-
+-- Zoom in, out & reset
+-- bind = $mod CTRL, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')
+-- bind = $mod CTRL, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')
+-- bind = $mod CTRL, 0, exec, hyprctl -q keyword cursor:zoom_factor 1
+-- binde = $mod CTRL, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')
+-- binde = $mod CTRL, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')
+--
 ----------------------
 --    MENU BINDS    --
 ----------------------
--See windowrules for notes
-bind = $mod , N, exec, env YAZI_CONFIG_HOME=$HOME/.config/yazi/notes alacritty -T "notes" -e yazi "~/Documents/notes"
-bind = $mod, M, exec, ~/.config/hypr/scripts/dmenu/man_pages.sh
-bind = $mod, X, exec, ~/.config/hypr/scripts/dmenu/kill_process.sh
-bind = $mod ALT, M, exec, ~/.config/hypr/scripts/dmenu/arch_wiki_search.sh
-bind = $mod, R, exec, ~/.config/hypr/scripts/rename_workspace.sh 
-
-
+--See windowrules for notes
+hl.bind(
+	Mod .. "+N",
+	hl.dsp.exec_cmd("env YAZI_CONFIG_HOME=$HOME/.config/yazi/notes alacritty -T 'notes' -e yazi '~/Documents/notes'")
+)
+hl.bind(Mod .. "+M", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/man_pages.sh"))
+hl.bind(Mod .. "+X", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/kill_process.sh"))
+hl.bind(Mod .. "+ALT+M", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/arch_wiki_search.sh"))
+hl.bind(Mod .. "+R", hl.dsp.exec_cmd("~/.config/hypr/scripts/rename_workspace.sh"))
 
 --------------------------
 --    WINDOW CONTROLS   --
 --------------------------
-- Groups
-bind = $mod, G, togglegroup
-bind = ALT, Tab, changegroupactive, f
-bind = Control_L, Tab, changegroupactive, b 
+-- Groups
+hl.bind(Mod .. "+G", hl.dsp.group.toggle())
+hl.bind(Mod .. "+ALT+Tab", hl.dsp.group.next())
+hl.bind(Mod .. "+Control_L+Tab", hl.dsp.group.prev())
 
-- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
-- Resize windows
-bind = $mod, minus, exec, hyprctl dispatch splitratio -0.25
-bind = $mod, equal, exec, hyprctl dispatch splitratio +0.25
-bind = $mod, mouse:275, exec, hyprctl dispatch splitratio -0.25
-bind = $mod, mouse:276, exec, hyprctl dispatch splitratio +0.25
+-- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
+-- Resize windows
+-- bind = $mod, minus, exec, hyprctl dispatch splitratio -0.25
+-- bind = $mod, equal, exec, hyprctl dispatch splitratio +0.25
+-- bind = $mod, mouse:275, exec, hyprctl dispatch splitratio -0.25
+-- bind = $mod, mouse:276, exec, hyprctl dispatch splitratio +0.25
+--
+-- Move/resize windows with Mod + LMB/RMB and dragging
+hl.bind(Mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(Mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(Mod .. " + mouse:274", hl.dsp.window.drag(), { mouse = true })
 
-- Move/resize windows with mod + LMB/RMB and dragging
-bindm = $mod, mouse:272, movewindow
-bindm = $mod, mouse:273, resizewindow
-bindm = $mod, mouse:274, movewindow
+-- Move focus with Mod + arrow keys
+hl.bind(Mod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(Mod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(Mod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(Mod .. " + down", hl.dsp.focus({ direction = "down" }))
 
+-- Modes
+hl.bind(Mod .. "+K", hl.dsp.window.fullscreen())
+hl.bind(Mod .. "+F", hl.dsp.window.float())
+hl.bind(Mod .. "+ALT+F", hl.dsp.window.pin())
+hl.bind(Mod .. "+SHIFT+F", hl.dsp.exec_cmd(" ~/.config/hypr/scripts/mini_player.sh"))
+hl.bind(Mod .. "+P", hl.dsp.window.pseudo())
+hl.bind(Mod .. "+J", hl.dsp.layout("togglesplit"))
+-- hl.bind(Mod.."+TAB", hl.dsp.window.fullscreen())
+-- bind = $mod, TAB, hyprexpo:expo, toggle - Hyprexpo
 
-- Move focus with mod + arrow keys 
-bind = $mod, left, movefocus, l    
-bind = $mod, right, movefocus, r   
-bind = $mod, up, movefocus, u      
-bind = $mod, down, movefocus, d    
-
-- Modes
-bind = $mod, K, fullscreen,
-bind = $mod, F, togglefloating,
-bind = $mod ALT, F, pin
-- bind = $mod SHIFT, F,  exec, ~/.config/hypr/scripts/mini_player.sh
-bind = $mod, P, pseudo, - dwindle
-bind = $mod, J, togglesplit, - dwindle
-- bind = $mod, TAB, hyprexpo:expo, toggle - Hyprexpo
-
-bind = $mod, O, setprop, active opaque toggle
-
-
+-- hl.bind(Mod .. "+O", hl.dsp.window.set_prop("opaque", 1))
+-- bind = $mod, O, setprop, active opaque toggle
 
 -----------------------
 --    APPLICATIONS   --
 -----------------------
-bind = $mod, E, exec, $fileManager
-bind = $mod ALT, E, exec, $GUIfileManager
-bind = $mod, T, exec, $terminal
-bind = $mod ALT, T, exec, $terminal2
-bind = $mod, space, exec, $menu
-bind = $mod, B, exec, $browser
-bind = $mod ALT, B, exec, $browser2
-bind = $mod, Q, exec, $taskManager 
-bind = $mod, A, exec, wofi --show drun --conf=~/.config/wofi/grid.conf
-bind = $mod ALT, N, exec, $notifications
-bind = $mod ALT, space, exec, ~/.config/hypr/scripts/fzf_search.sh 
-bind = $mod, V, exec, $editor
-bind = $mod ALT, V, exec, $editor2
-bind = $mod CTRL, N, exec, ~/.config/hypr/scripts/dmenu/notifications_history.sh
-bind = $mod, D, exec, $notifications dismiss --no-history
-bind = $mod CTRL, M, exec, $mail
-bind = $mod CTRL, B, exec, $shell
+-- Core Applications
+hl.bind(Mod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(Mod .. " + ALT + E", hl.dsp.exec_cmd(GUIfileManager))
+hl.bind(Mod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(Mod .. " + ALT + T", hl.dsp.exec_cmd(terminal2))
+hl.bind(Mod .. " + space", hl.dsp.exec_cmd(menu))
+hl.bind(Mod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(Mod .. " + ALT + B", hl.dsp.exec_cmd(browser2))
+hl.bind(Mod .. " + Q", hl.dsp.exec_cmd(taskManager))
 
-- Screenshot
-$ssdir = ~/Pictures/Screenshots/
-bind = , PRINT, exec, hyprshot -m output -o $ssdir   - Monitor to file
-bind = $mod, PRINT, exec, hyprshot -m window -o $ssdir   - Window to file
-bind = $mod SHIFT, PRINT, exec, hyprshot -m region -o $ssdir   - Region to file
+-- Specific Commands & Scripts
+hl.bind(Mod .. " + A", hl.dsp.exec_cmd("wofi --show drun --conf=~/.config/wofi/grid.conf"))
+hl.bind(Mod .. " + ALT + N", hl.dsp.exec_cmd(notifications))
+hl.bind(Mod .. " + ALT + space", hl.dsp.exec_cmd("~/.config/hypr/scripts/fzf_search.sh"))
+hl.bind(Mod .. " + V", hl.dsp.exec_cmd(editor))
+hl.bind(Mod .. " + ALT + V", hl.dsp.exec_cmd(editor2))
+hl.bind(Mod .. " + CTRL + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/notifications_history.sh"))
+hl.bind(Mod .. " + D", hl.dsp.exec_cmd(notifications .. " dismiss --no-history"))
+hl.bind(Mod .. " + CTRL + M", hl.dsp.exec_cmd(mail))
+hl.bind(Mod .. " + CTRL + B", hl.dsp.exec_cmd(shell))
 
-bind = Control_L, PRINT, exec, hyprshot -m output --clipboard-only -o $ssdir   - Monitor to clipboard
-bind = $mod CTRL, PRINT, exec, hyprshot -m window --clipboard-only -o $ssdir - Window to clipboard
-bind = $mod CTRL SHIFT, PRINT, exec, hyprshot -m region --clipboard-only -o $ssdir  - Region clipboard
+-- Screenshot
+local ssdir = "~/Pictures/Screenshots/"
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output -o " .. ssdir)) -- Monitor to file
+hl.bind(Mod .. "+PRINT", hl.dsp.exec_cmd("hyprshot -m window -o " .. ssdir)) -- Window to file
+hl.bind(Mod .. "+SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m region -o " .. ssdir)) -- Region to file
 
-- Clipboard
-bind = $mod SHIFT, V, exec, cliphist list | $menu --dmenu | cliphist decode | wl-copy
+hl.bind("CTRL+PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only  -o " .. ssdir)) -- Monitor to clipboard
+hl.bind(Mod .. "+CTRL+PRINT", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only  -o " .. ssdir)) -- Window to clipboard
+hl.bind(Mod .. "+CTRL+SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only  -o " .. ssdir)) -- Region to clipboard
+
+-- Clipboard
+hl.bind(Mod .. "+SHIFT+V", hl.dsp.exec_cmd("cliphist list | " .. menu .. " --dmenu | cliphist decode | wl-copy"))
 
 ---------------------------
 --    SWITCHERS & MODES  --
 ---------------------------
-- Wallpaper Switchers
-- bind = $mod, W, exec, ~/.config/hypr/scripts/wallpaper_switcher.sh
-bind = $mod, W, exec, waypaper --random
-bind = $mod ALT, W, exec, waypaper
+-- Wallpaper Switchers
+-- bind = $mod, W, exec, ~/.config/hypr/scripts/wallpaper_switcher.sh
+hl.bind(Mod .. "+W", hl.dsp.exec_cmd("waypaper --random"))
+hl.bind(Mod .. "+ALT+W", hl.dsp.exec_cmd("waypaper"))
 
-- Game Mode
-bind = $mod, F10, exec, ~/.config/hypr/scripts/game_mode.sh
+-- Game Mode
+hl.bind(Mod .. "+F10", hl.dsp.exec_cmd("~/.config/hypr/scripts/game_mode.sh"))
 
-------------------------                                        
---    POWER OPTIONS   --                                        
-------------------------                                        
-bind = $mod CTRL SHIFT, X, exec,shutdown now                
-bind = $mod SHIFT, H, exec, systemctl hibernate && hyprlock 
-bind = $mod, Z, exec, ~/.config/hypr/scripts/dmenu/power_menu.sh                       
-bindl = , XF86PowerOff, exec, wlogout                         
-bind = $mod, L,exec, hyprlock                               
+------------------------
+--    POWER OPTIONS   --
+------------------------
+hl.bind(Mod .. "+ALT+CTRL+SHIFT+X", hl.dsp.exec_cmd("shutdown now"))
+hl.bind(Mod .. "+SHIFT+H", hl.dsp.exec_cmd("systemctl hibernate && hyprlock"))
+hl.bind(Mod .. "+Z", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/power_menu.sh"))
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd("wlogout"))
+hl.bind(Mod .. "+L", hl.dsp.exec_cmd("hyprlock"))
