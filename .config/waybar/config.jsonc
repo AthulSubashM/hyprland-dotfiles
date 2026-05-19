@@ -29,6 +29,7 @@
   "hyprland/workspaces": {
     "format": "{name}",
     "format-window-separator": "",
+    "show-special": true,
   },
 
   "hyprland/window": {

@@ -1,4 +1,5 @@
 require("settings.themes.animations")
+local wal = require("settings.themes.colors")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -18,8 +19,7 @@ hl.config({
 		-- no_border_on_floating = true,
 
 		col = {
-			-- active_border = $color2,
-			-- col.inactive_border = $color10,
+			active_border = wal.color2,
 		},
 		resize_on_border = true,
 		allow_tearing = false,
@@ -85,7 +85,7 @@ hl.config({
 	},
 
 	group = {
-		-- col.border_active =  $color11
+		col = { border_active = wal.color0 },
 
 		auto_group = false,
 		drag_into_group = 1,
@@ -104,9 +104,11 @@ hl.config({
 			gradient_rounding_power = 2,
 			gradient_round_only_edges = false,
 
-			-- text_color_inactive = $color8
-			-- col.active = $color1
-			-- col.inactive = $backgroundCol
+			text_color_inactive = wal.color8,
+			col = {
+				active = wal.color1,
+				inactive = wal.background,
+			},
 		},
 	},
 
