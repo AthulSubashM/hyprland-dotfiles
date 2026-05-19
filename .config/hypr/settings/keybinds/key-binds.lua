@@ -66,10 +66,11 @@ hl.bind(Mod .. "+Control_L+Tab", hl.dsp.group.prev())
 
 -- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
 -- Resize windows
--- bind = $mod, minus, exec, hyprctl dispatch splitratio -0.25
--- bind = $mod, equal, exec, hyprctl dispatch splitratio +0.25
--- bind = $mod, mouse:275, exec, hyprctl dispatch splitratio -0.25
--- bind = $mod, mouse:276, exec, hyprctl dispatch splitratio +0.25
+
+hl.bind(Mod .. " + minus", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
+hl.bind(Mod .. " + equal", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
+hl.bind(Mod .. " + mouse:275", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
+hl.bind(Mod .. " + mouse:276", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
 --
 -- Move/resize windows with Mod + LMB/RMB and dragging
 hl.bind(Mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
@@ -85,15 +86,14 @@ hl.bind(Mod .. " + down", hl.dsp.focus({ direction = "down" }))
 -- Modes
 hl.bind(Mod .. "+K", hl.dsp.window.fullscreen())
 hl.bind(Mod .. "+F", hl.dsp.window.float())
-hl.bind(Mod .. "+ALT+F", hl.dsp.window.pin())
+hl.bind(Mod .. "+P", hl.dsp.window.pin())
 hl.bind(Mod .. "+SHIFT+F", hl.dsp.exec_cmd(" ~/.config/hypr/scripts/mini_player.sh"))
-hl.bind(Mod .. "+P", hl.dsp.window.pseudo())
+hl.bind(Mod .. "+ALT+P", hl.dsp.window.pseudo())
 hl.bind(Mod .. "+J", hl.dsp.layout("togglesplit"))
 -- hl.bind(Mod.."+TAB", hl.dsp.window.fullscreen())
 -- bind = $mod, TAB, hyprexpo:expo, toggle - Hyprexpo
 
--- hl.bind(Mod .. "+O", hl.dsp.window.set_prop("opaque", 1))
--- bind = $mod, O, setprop, active opaque toggle
+hl.bind(Mod .. "+O", hl.dsp.window.set_prop({ prop = "opaque", value = 1 }))
 
 -----------------------
 --    APPLICATIONS   --
