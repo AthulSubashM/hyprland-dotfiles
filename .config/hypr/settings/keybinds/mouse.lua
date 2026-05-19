@@ -22,6 +22,29 @@ hl.gesture({
 	direction = "horizontal",
 	action = "workspace",
 })
+hl.gesture({
+	fingers = 2,
+	direction = "pinch",
+	mods = "SUPER",
+	action = "cursorZoom",
+	zoom_level = 1,
+	mode = "live",
+})
+
+hl.gesture({
+	fingers = 3,
+	direction = "up",
+	action = function()
+		hl.exec_cmd("fuzzel")
+	end,
+})
+hl.gesture({
+	fingers = 3,
+	direction = "down",
+	action = function()
+		hl.exec_cmd("firefox")
+	end,
+})
 
 hl.device({
 	name = "epic-mouse-v1",
