@@ -6,6 +6,13 @@ hl.layer_rule({
 	ignore_alpha = 0.5,
 })
 
+hl.layer_rule({
+	name = "nm-sidebar-blur",
+	match = { namespace = "nm-sidebar" },
+	blur = true,
+	ignore_alpha = 0.5,
+})
+
 -- Layer Rules for Fuzzel (Launcher)
 hl.layer_rule({
 	name = "launcher-dim",

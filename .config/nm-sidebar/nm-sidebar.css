@@ -1,0 +1,105 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+.nm-sidebar-window,
+.nm-sidebar-surface {
+  background: transparent;
+}
+
+dialog.nm-sidebar-dialog floating-sheet > dimming,
+dialog.nm-sidebar-dialog bottom-sheet > dimming {
+  background-color: rgba(0, 0, 0, 0.42);
+}
+
+.nm-sidebar-panel {
+  background: alpha(@background, 0.6);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 1px solid alpha(@foreground, 0.12);
+  margin: 8px;
+}
+
+.network-scroll-fade {
+  margin: 0;
+}
+
+.network-scroll-fade-top {
+  background: linear-gradient(
+    to bottom,
+    @background 0%,
+    @background 28%,
+    alpha(@background, 0.72) 58%,
+    alpha(@background, 0)
+  );
+}
+
+.network-scroll-fade-bottom {
+  background: linear-gradient(
+    to top,
+    @background 0%,
+    @background 28%,
+    alpha(@background, 0.72) 58%,
+    alpha(@background, 0)
+  );
+}
+
+.network-subgroup {
+  margin-top: 8px;
+}
+
+.network-subgroup.network-subgroup-separated {
+  margin-top: 18px;
+}
+
+.network-subsection-label {
+  margin: 0 12px 2px;
+  color: alpha(@foreground, 0.68);
+  font-weight: 700;
+}
+.active-connection-row {
+  background: alpha(@color7, 0.6);
+  color: @background;
+}
+
+.active-connection-row:hover {
+  background: alpha(@color7, 1);
+}
+
+@keyframes connecting-pulse {
+  0%,
+  100% {
+    background: alpha(@color3, 0);
+  }
+
+  50% {
+    background: alpha(@color3, 0.14);
+  }
+}
+
+.connecting-connection-row {
+  animation: connecting-pulse 1.4s ease-in-out infinite;
+  background: alpha(@color2, 0.14);
+}
+
+.connecting-connection-row:hover {
+  background: alpha(@color2, 0.2);
+}
+
+.failed-connection-row {
+  background: alpha(@error_bg_color, 0.14);
+}
+
+.failed-connection-row:hover {
+  background: alpha(@error_bg_color, 0.2);
+}
+
+.disconnected-connection-row {
+  background: alpha(@foreground, 0.06);
+}
+
+.disconnected-connection-row:hover {
+  background: alpha(@foreground, 0.1);
+}
+
+switch:checked {
+  background: @color1;
+}

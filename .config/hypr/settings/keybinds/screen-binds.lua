@@ -16,3 +16,19 @@ for _, key in ipairs(down_keys) do
 		locked = true,
 	})
 end
+
+-- Toggle Laptop Screen OFF
+hl.bind(Mod .. " + ALT + F6", function()
+	hl.monitor({ output = "eDP-1", disabled = true })
+end)
+
+-- Toggle Laptop Screen ON
+hl.bind(Mod .. " + F6", function()
+	hl.monitor({
+		output = "eDP-1",
+		disabled = false,
+		mode = "preferred",
+		position = "0x0",
+		scale = 1,
+	})
+end)

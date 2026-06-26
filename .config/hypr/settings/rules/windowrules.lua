@@ -39,8 +39,17 @@ hl.window_rule({
 	name = "blueman",
 	match = { class = "^(blueman-manager)$" },
 	float = true,
-	size = { "monitor_w * 0.3", "monitor_h * 0.6" },
-	move = { "monitor_w * 0.68", "monitor_h * 0.05" },
+	size = { "monitor_w * 0.3", "monitor_h * 0.5" },
+	move = { "monitor_w * 0.69", "monitor_h * 0.05" },
+	animation = "slide",
+	border_size = 0,
+})
+hl.window_rule({
+	name = "overskride",
+	match = { title = "^(overskride)$" },
+	float = true,
+	-- size = { "monitor_w * 0.3", "monitor_h * 0.5" },
+	move = { "monitor_w * 0.677", "monitor_h * 0.05" },
 	animation = "slide",
 	border_size = 0,
 })
@@ -52,6 +61,15 @@ hl.window_rule({
 	float = true,
 	size = { "monitor_w * 0.3", "monitor_h * 0.4" },
 	move = { "monitor_w * 0.69", "monitor_h * 0.05" },
+	animation = "slide",
+	border_size = 0,
+})
+hl.window_rule({
+	name = "pwvucontrol",
+	match = { class = "^(com.saivert.pwvucontrol)$" },
+	float = true,
+	size = { "monitor_w * 0.48", "monitor_h * 0.5" },
+	move = { "monitor_w * 0.515", "monitor_h * 0.05" },
 	animation = "slide",
 	border_size = 0,
 })
@@ -119,6 +137,7 @@ hl.window_rule({
 	rounding = 0,
 	dim_around = true,
 	animation = "slide 20%",
+	size = { "1200", "600" },
 })
 
 -- Whatsapp Web
@@ -171,4 +190,13 @@ hl.window_rule({
 	name = "waypaper-rule",
 	match = { class = "^(waypaper)$" },
 	float = true,
+})
+
+hl.window_rule({
+	name = "btop-rule",
+	match = { title = "^(btop)$" },
+	float = true,
+	size = { "1200", "800" },
+	border_size = 0,
+	rounding = 0,
 })

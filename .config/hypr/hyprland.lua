@@ -8,6 +8,7 @@ require("settings.rules.windowrules")
 require("settings.permissions")
 require("settings.keybinds.key-binds")
 require("settings.themes.general")
+require("plugins.hyprplugins")
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
 	scrolling = {

@@ -59,11 +59,18 @@
   // },
   "group/left": {
     "orientation": "horizontal",
-    "modules": ["custom/notification", "clock", "custom/terminal", "tray"],
+    "modules": ["custom/notification", "clock", "custom/terminal"],
   },
   "group/right": {
     "orientation": "horizontal",
-    "modules": ["group/expand", "pulseaudio", "battery", "custom/power"],
+    "modules": [
+      "group/expand",
+      "network",
+      "bluetooth",
+      "pulseaudio",
+      "battery",
+      "custom/power",
+    ],
   },
 
   "custom/notification": {
@@ -98,7 +105,8 @@
     "tooltip-format-disconnected": "Error",
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "{ifname} 🖧 ",
-    "on-click": "~/.config/waybar/scripts/toggle-network-gui.sh",
+    // "on-click": "~/.config/waybar/scripts/toggle-network-gui.sh",
+    "on-click": "nm-sidebar --toggle",
   },
   "bluetooth": {
     "format-on": "󰂯",
@@ -158,8 +166,7 @@
     },
     "modules": [
       "custom/expand",
-      "network",
-      "bluetooth",
+      "tray",
       "custom/colorpicker",
       "cpu",
       "memory",
@@ -193,7 +200,7 @@
 
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": " {icon} ",
+    "format": "{icon}",
     "format-bluetooth": " 󱡏 ",
     "format-bluetooth-muted": " 󱡐 ",
     "format-muted": " ",

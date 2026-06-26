@@ -17,7 +17,7 @@ for _, key in ipairs(dec_vol) do
 end
 
 for _, key in ipairs(mute) do
-	hl.bind(key, hl.dsp.exec_cmd("swayosd-client --mute-toggle"), {
+	hl.bind(key, hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"), {
 		repeating = true,
 		locked = true,
 	})
@@ -25,7 +25,7 @@ end
 
 hl.bind(
 	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+	hl.dsp.exec_cmd("swayosd-client --input-volume mute-toggle"),
 	{ locked = true, repeating = true }
 )
 

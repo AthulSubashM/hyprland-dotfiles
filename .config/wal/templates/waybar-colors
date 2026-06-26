@@ -1,0 +1,205 @@
+/* Pywal Style Template for Waybar */
+/* Update css in ~/.config/wal/templates/waybar-colors */
+
+@define-color background {background};
+@define-color foreground {foreground};
+@define-color color0 {color0};
+@define-color color1 {color1};
+@define-color color2 {color2};
+@define-color color3 {color3};
+@define-color color4 {color4};
+@define-color color5 {color5};
+@define-color color6 {color6};
+@define-color color7 {color7};
+@define-color color8 {color8};
+@define-color color9 {color9};
+
+* {{
+  font-family:
+    "Noto Sans Medium", "CodeNewRoman Nerd Font Propo", "Symbols Nerd Font",
+    "Nerd Font", sans-serif;
+  font-weight: 600;
+  font-size: 11pt;
+  background: transparent;
+}}
+
+#left {{
+  padding: 7px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}}
+
+.modules-left {{
+  margin: 5px 0 0 5px;
+}}
+.modules-center {{
+  margin: 5px 0 0 0;
+}}
+.modules-right {{
+  margin: 5px 5px 0 0;
+}}
+#right {{
+  padding: 7px;
+  border-radius: 10px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}}
+tooltip {{
+  background: @background;
+  color: @color7;
+}}
+
+#custom-notification {{
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: @color7;
+}}
+#clock {{
+  padding: 0px 5px;
+  color: @color7;
+  transition: all 0.3s ease;
+}}
+#bluetooth {{
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: @color7;
+}}
+
+#network {{
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: @color7;
+}}
+
+#battery {{
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: #26a65b;
+}}
+#battery.charging {{
+  color: #26a65b;
+}}
+
+#battery.good {{
+  color: #26a65b;
+}}
+
+#battery.warning {{
+  color: #ffbe61;
+}}
+
+#battery.critical {{
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}}
+#group-expand {{
+  transition: all 0.3s ease;
+  padding: 2px;
+}}
+#custom-expand {{
+  color: alpha(@foreground, 0.8);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}}
+#custom-expand:hover {{
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+}}
+#custom-colorpicker {{
+  padding: 0px 10px;
+}}
+#cpu,
+#memory,
+#temperature {{
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: @color7;
+}}
+#custom-endpoint {{
+  color: alpha(@foreground, 0.8);
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+}}
+#tray {{
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+}}
+#tray menu {{
+  background: @color9;
+}}
+
+#tray menu separator {{
+  padding: 0px 5px;
+  transition: all 0.3s ease;
+}}
+
+#pulseaudio {{
+  padding: 0px 5px;
+}}
+
+#clock:hover,
+#custom-pacman:hover,
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-power:hover,
+#pulseaudio:hover {{
+  transition: all 0.3s ease;
+  color: @color9;
+}}
+
+#mpris {{
+  padding: 0 15px;
+  margin-right: 5px;
+  border-radius: 10px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}}
+
+#window {{
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-left: 5px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}}
+window#waybar.empty #window {{
+  background: none;
+  padding: 0;
+}}
+
+#workspaces button {{
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 7px;
+  margin: 0 2px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}}
+#workspaces button.active {{
+  background: alpha(@color9, 0.6);
+}}
+#workspaces button:hover {{
+  border: none;
+  background-color: alpha(@color9, 0.3);
+}}
+
+#custom-terminal {{
+  padding: 0 15px 0 5px;
+}}
+
+window#waybar.solo .modules-left,
+window#waybar.solo .modules-center,
+window#waybar.solo .modules-right {{
+  margin-bottom: 5px;
+}}

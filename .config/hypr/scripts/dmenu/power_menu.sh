@@ -20,10 +20,10 @@ CHOICE=$(
 # Handle the choice using a case statement
 case "$CHOICE" in
 "󰐥 Shutdown")
-  systemctl poweroff
+  hyprshutdown -t 'Shutting Down' --post-cmd 'systemctl poweroff'
   ;;
 "󰜉 Reboot")
-  systemctl reboot
+  hyprshutdown -t 'Rebooting' --post-cmd 'systemctl reboot'
   ;;
 "󰤄 Hibernate")
   systemctl hibernate && hyprlock
@@ -35,10 +35,11 @@ case "$CHOICE" in
 #   hyprlock
 #   ;;
 "󰌾 Logout")
-  loginctl terminate-user "$USER"
+  hyprshutdown -t 'Logging out'
+  # loginctl terminate-user "$USER"
   ;;
 "󰗽 Firmware")
-  systemctl reboot --firmware
+  hyprshutdown -t 'Rebooting to Firmware' --post-cmd 'systemctl reboot --firmware'
   ;;
 *)
   exit 0

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 WINDOW_CLASS="org.pulseaudio.pavucontrol"
+# WINDOW_CLASS="com.saivert.pwvucontrol"
 
 # Check if the window is currently open
 if hyprctl clients -j | jq -e ".[] | select(.class == \"$WINDOW_CLASS\")" >/dev/null; then
@@ -9,4 +10,5 @@ if hyprctl clients -j | jq -e ".[] | select(.class == \"$WINDOW_CLASS\")" >/dev/
 else
   # If not open, launch the application
   pavucontrol
+  # pwvucontrol
 fi

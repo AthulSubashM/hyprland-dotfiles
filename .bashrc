@@ -13,8 +13,9 @@ alias grep='grep --color=auto'
 alias cx='chmod +x $(fzf)'
 
 # Pacman
-alias upd='printf "\033[1;34mUpdating arch packages...\033[0m\n"; yay -Syu ; printf "\033[1;32mUpdating Flatpaks...\033[0m\n"; flatpak update -y ; printf "\033[1;36mAll updates complete!\033[0m\n"'
+alias upd='printf "\033[1;34mUpdating Arch packages...\033[0m\n"; sudo pacman -Syu ; printf "\033[1;34mUpdating AUR...\033[0m\n"; yay -Syu ; printf "\033[1;34mUpdating Flatpaks...\033[0m\n"; flatpak update -y ; printf "\033[1;34mUpdating Snaps...\033[0m\n"; sudo snap refresh ; printf "\033[1;36mAll updates complete!\033[0m\n"'
 alias plist='pacman -Qent'
+alias pinfo='pacman -Qi'
 alias srh='pacman -Ss'
 alias ins='sudo pacman -S'
 alias rmv='sudo pacman -Rns'
@@ -55,3 +56,6 @@ export FZF_DEFAULT_OPTS=" \
 --color=border:#6C7086,label:#CDD6F4"
 
 eval "$(zoxide init bash)"
+
+# Created by `pipx` on 2026-06-18 18:11:56
+export PATH="$PATH:/home/athul/.local/bin"

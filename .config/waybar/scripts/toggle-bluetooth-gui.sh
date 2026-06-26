@@ -1,6 +1,7 @@
 #!/bin/bash
 
 WINDOW_CLASS="blueman-manager"
+# WINDOW_CLASS="overskride"
 
 # Check if the window is currently open
 if hyprctl clients -j | jq -e ".[] | select(.class == \"$WINDOW_CLASS\")" >/dev/null; then
@@ -8,5 +9,5 @@ if hyprctl clients -j | jq -e ".[] | select(.class == \"$WINDOW_CLASS\")" >/dev/
   hyprctl dispatch "hl.dsp.window.close({window=\"class:$WINDOW_CLASS\"})"
 else
   # If not open, launch the application
-  blueman-manager
+  $WINDOW_CLASS
 fi

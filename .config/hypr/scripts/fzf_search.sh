@@ -16,7 +16,7 @@ alacritty --title "FZF_Search" -e sh -c "
     fzf --prompt='Open File > ' \
       $colors \
       --reverse --margin 4% \
-      --preview 'bat --theme \"Catppuccin Mocha\" --color=always {}' --preview-window down,10 \
+      --preview 'bat --theme \"Catppuccin Mocha\" --color=always {}' --preview-window right,60 \
   > '$pipe'
 " &
 

@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Check if waybar is running
-if pgrep -x "waybar" >/dev/null; then
-  # If running, kill the waybar process
-  pkill -x "waybar"
-fi
-waybar &
-
-makoctl reload
-
-if pgrep -x "swayosd-server" >/dev/null; then
-  pkill swayosd-server
-fi
+pkill -x swayosd-server
 swayosd-server &
+
+nm-sidebar --reload-css &
+makoctl reload &
+
+pywalfox update &
+
+for socket in /run/user/1000/nvim.*.0; do
+  if [ -S "$socket" ]; then
+    nvim --server "$socket" --remote-send "<C-\><C-N>:PywalReload<CR>" 2>/dev/null &
+  fi
+done
