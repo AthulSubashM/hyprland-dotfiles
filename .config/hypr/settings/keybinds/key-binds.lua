@@ -16,7 +16,7 @@ local GUIfileManager = "thunar"
 -- local menu = "wofi --show drun -n
 local menu = "fuzzel"
 local browser = "firefox"
-local browser2 = "chromium"
+local browser2 = "brave-origin"
 local taskManager = terminal2 .. " -T btop -e btop"
 -- local local notifications = "swaync-client -t -sw
 local notifications = "makoctl"
@@ -154,14 +154,18 @@ hl.bind(Mod .. "+ CTRL + N", hl.dsp.exec_cmd("nm-sidebar --toggle"))
 
 -- Screenshot
 local ssdir = "~/Pictures/Screenshots/"
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output -o " .. ssdir)) -- Monitor to file
-hl.bind(Mod .. "+PRINT", hl.dsp.exec_cmd("hyprshot -m window -o " .. ssdir)) -- Window to file
-hl.bind(Mod .. "+SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m region -o " .. ssdir)) -- Region to file
+hl.bind("PRINT", hl.dsp.exec_cmd("flameshot gui")) -- gui
+hl.bind(Mod .. "+ PRINT", hl.dsp.exec_cmd("flameshot full -p " .. ssdir)) -- full to file
+hl.bind(Mod .. "+ CTRL + PRINT", hl.dsp.exec_cmd("flameshot full -c")) -- full to clipboard
 
-hl.bind("CTRL+PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only  -o " .. ssdir)) -- Monitor to clipboard
-hl.bind(Mod .. "+CTRL+PRINT", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only  -o " .. ssdir)) -- Window to clipboard
-hl.bind(Mod .. "+CTRL+SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only  -o " .. ssdir)) -- Region to clipboard
-
+-- hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output -o " .. ssdir)) -- Monitor to file
+-- hl.bind(Mod .. "+PRINT", hl.dsp.exec_cmd("hyprshot -m window -o " .. ssdir)) -- Window to file
+-- hl.bind(Mod .. "+SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m region -o " .. ssdir)) -- Region to file
+--
+-- hl.bind("CTRL+PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only  -o " .. ssdir)) -- Monitor to clipboard
+-- hl.bind(Mod .. "+CTRL+PRINT", hl.dsp.exec_cmd("hyprshot -m window --clipboard-only  -o " .. ssdir)) -- Window to clipboard
+-- hl.bind(Mod .. "+CTRL+SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only  -o " .. ssdir)) -- Region to clipboard
+--
 -- Clipboard
 hl.bind(Mod .. "+SHIFT+V", hl.dsp.exec_cmd("cliphist list | " .. menu .. " --dmenu | cliphist decode | wl-copy"))
 

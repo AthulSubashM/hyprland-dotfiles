@@ -13,6 +13,16 @@
 @define-color color7 {color7};
 @define-color color8 {color8};
 @define-color color9 {color9};
+@define-color color10 {color10};
+@define-color color11 {color11};
+@define-color color12 {color12};
+@define-color color13 {color13};
+@define-color color14 {color14};
+@define-color color15 {color15};
+
+
+
+
 
 * {{
   font-family:
@@ -25,7 +35,7 @@
 
 #left {{
   padding: 7px;
-  background: alpha(@background, 0.6);
+  background: alpha(@color1, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }}
@@ -42,34 +52,34 @@
 #right {{
   padding: 7px;
   border-radius: 10px;
-  background: alpha(@background, 0.6);
+  background: alpha(@color1, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }}
 tooltip {{
-  background: @background;
-  color: @color7;
+  background: @color1;
+  color: #ffffff;
 }}
 
 #custom-notification {{
   padding: 0px 10px;
   transition: all 0.3s ease;
-  color: @color7;
+  color: #ffffff;
 }}
 #clock {{
   padding: 0px 5px;
-  color: @color7;
+  color: #ffffff;
   transition: all 0.3s ease;
 }}
 #bluetooth {{
   padding: 0px 10px;
   transition: all 0.3s ease;
-  color: @color7;
+  color: #ffffff;
 }}
 
 #network {{
   padding: 0px 10px;
   transition: all 0.3s ease;
-  color: @color7;
+  color: #ffffff;
 }}
 
 #battery {{
@@ -102,7 +112,7 @@ tooltip {{
   padding: 2px;
 }}
 #custom-expand {{
-  color: alpha(@foreground, 0.8);
+  color: alpha(#ffffff, 0.8);
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease;
 }}
@@ -118,10 +128,10 @@ tooltip {{
 #temperature {{
   padding: 0px 10px;
   transition: all 0.3s ease;
-  color: @color7;
+  color: #ffffff;
 }}
 #custom-endpoint {{
-  color: alpha(@foreground, 0.8);
+  color: alpha(#ffffff, 0.8);
   text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
 }}
 #tray {{
@@ -158,7 +168,7 @@ tooltip {{
 
 #mpris {{
   padding: 0 15px;
-  margin-right: 5px;
+  margin-right: 10px;
   border-radius: 10px;
   background: alpha(@background, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
@@ -167,7 +177,7 @@ tooltip {{
 #window {{
   border-radius: 10px;
   padding: 0 10px;
-  margin-left: 5px;
+  margin-left: 10px;
   background: alpha(@background, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }}

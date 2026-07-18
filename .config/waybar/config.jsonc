@@ -10,8 +10,8 @@
 
   "mpris": {
     "format": "{artist} - {title}",
-    "format-playing": "  {artist} - {title}",
-    "format-paused": " {artist} - {title}",
+    "format-playing": "   {artist} - {title}",
+    "format-paused": "   {artist} - {title}",
     "player": "playerctld",
     "tooltip": true,
     "on-click": "playerctl play-pause",
@@ -33,7 +33,7 @@
   },
 
   "hyprland/window": {
-    "format": "{class}",
+    "format": "{title}",
     "icon-size": 16,
     "icon": true,
     "max-length": 60,
@@ -221,7 +221,7 @@
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
   },
   "custom/power": {
-    "format": "  ",
+    "format": "   ",
     "tooltip-format": "Power Options",
     "on-click": "wlogout",
   },
