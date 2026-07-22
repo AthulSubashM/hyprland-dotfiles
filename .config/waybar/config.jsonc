@@ -2,11 +2,30 @@
   "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
-  "modules-left": ["group/left", "hyprland/window"],
+  "modules-left": ["group/left", "mpris"],
   // "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["mpris", "group/right"],
+  "modules-right": ["group/right"],
 
-  "modules-center": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "group/left": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/notification",
+      "hyprland/workspaces",
+      "custom/terminal",
+    ],
+  },
+  "group/right": {
+    "orientation": "horizontal",
+    "modules": [
+      "group/expand",
+      "network",
+      "bluetooth",
+      "pulseaudio",
+      "battery",
+      "custom/power",
+    ],
+  },
 
   "mpris": {
     "format": "{artist} - {title}",
@@ -57,21 +76,6 @@
   //         "*": [ 1,2,3,4,5 ]
   //     }
   // },
-  "group/left": {
-    "orientation": "horizontal",
-    "modules": ["custom/notification", "clock", "custom/terminal"],
-  },
-  "group/right": {
-    "orientation": "horizontal",
-    "modules": [
-      "group/expand",
-      "network",
-      "bluetooth",
-      "pulseaudio",
-      "battery",
-      "custom/power",
-    ],
-  },
 
   "custom/notification": {
     "tooltip": false,

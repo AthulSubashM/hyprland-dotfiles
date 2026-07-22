@@ -5,6 +5,7 @@ hl.on("hyprland.start", function()
 	-- hl.exec_cmd("sleep 2 && swayosd-server")
 	hl.exec_cmd("sleep 1 && hypridle & systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("sleep 2 && wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store")
+	hl.exec_cmd("sleep 2 && wpets-all --watch-config --config ~/.config/bongocat/bongocat.conf")
 end)
 -- exec-once = waybar
 -- -- Wallpapers

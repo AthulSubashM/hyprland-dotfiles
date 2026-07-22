@@ -201,9 +201,14 @@ hl.window_rule({
 	rounding = 0,
 })
 
+-- Firefox
 hl.on("window.title", function(w)
 	if w ~= nil and w.title == "Extension: (Bitwarden Password Manager) - Bitwarden — Mozilla Firefox" then
 		hl.dispatch(hl.dsp.window.float({ action = "set" }))
 		hl.dispatch(hl.dsp.window.center())
 	end
 end)
+hl.window_rule({
+	match = { class = "^(firefox-work)$" },
+	workspace = "name:W",
+})

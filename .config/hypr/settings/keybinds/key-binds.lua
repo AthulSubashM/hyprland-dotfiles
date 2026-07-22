@@ -134,6 +134,10 @@ hl.bind(Mod .. " + T", hl.dsp.exec_cmd(terminal2))
 hl.bind(Mod .. " + ALT + T", hl.dsp.exec_cmd(terminal))
 hl.bind(Mod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(Mod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(
+	Mod .. "+ SHIFT + B",
+	hl.dsp.exec_cmd('firefox --no-remote --profile "$HOME/.mozilla/firefox/lJdOmGgJ.Profile 1" --name "firefox-work"')
+)
 hl.bind(Mod .. " + ALT + B", hl.dsp.exec_cmd(browser2))
 hl.bind(Mod .. " + Q", hl.dsp.exec_cmd(taskManager))
 
