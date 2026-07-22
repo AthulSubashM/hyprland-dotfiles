@@ -76,7 +76,7 @@ hl.bind(
 	hl.dsp.exec_cmd("env YAZI_CONFIG_HOME=$HOME/.config/yazi/notes alacritty -T 'notes' -e yazi '~/Documents/notes'")
 )
 hl.bind(Mod .. "+M", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/man_pages.sh"))
-hl.bind(Mod .. "+X", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/kill_process.sh"))
+hl.bind(Mod .. "+Z", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/kill_process.sh"))
 hl.bind(Mod .. "+ALT+M", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/arch_wiki_search.sh"))
 hl.bind(Mod .. "+R", hl.dsp.exec_cmd("~/.config/hypr/scripts/rename_workspace.sh"))
 
@@ -219,6 +219,6 @@ hl.bind(Mod .. "+ALT+F7", hl.dsp.exec_cmd("hyprctl dispatch 'hl.config({plugin =
 ------------------------
 hl.bind(Mod .. "+ALT+CTRL+SHIFT+X", hl.dsp.exec_cmd("shutdown now"))
 hl.bind(Mod .. "+SHIFT+H", hl.dsp.exec_cmd("systemctl hibernate && hyprlock"))
-hl.bind(Mod .. "+Z", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/power_menu.sh"))
+hl.bind(Mod .. "+X", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/power_menu.sh"))
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd("wlogout"))
 hl.bind(Mod .. "+L", hl.dsp.exec_cmd("hyprlock"))
