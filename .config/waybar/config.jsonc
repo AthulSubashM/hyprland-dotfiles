@@ -14,6 +14,7 @@
       "custom/notification",
       "hyprland/workspaces",
       "custom/terminal",
+      "group/tray",
     ],
   },
   "group/right": {
@@ -23,12 +24,33 @@
       "privacy",
       "network",
       "bluetooth",
-      "pulseaudio",
+      "group/audio",
+      "group/brightness",
       "group/batteryoptions",
       "custom/power",
     ],
   },
 
+  "group/audio": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+    },
+    "modules": ["pulseaudio", "pulseaudio/slider"],
+  },
+  "group/batteryoptions": {
+    "orientation": "horizontal",
+    "modules": ["custom/tlp", "battery"],
+  },
+  "group/brightness": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+    },
+    "modules": ["backlight", "backlight/slider"],
+  },
   "group/expand": {
     "orientation": "horizontal",
     "drawer": {
@@ -38,18 +60,26 @@
     },
     "modules": [
       "custom/expand",
-      "tray",
-      "custom/colorpicker",
-      "custom/hyprsunset",
       "cpu",
       "memory",
       "temperature",
       "custom/endpoint",
     ],
   },
-  "group/batteryoptions": {
+  "group/tray": {
     "orientation": "horizontal",
-    "modules": ["custom/tlp", "battery"],
+    "drawer": {
+      "transition-duration": 600,
+      "transition-left-to-right": false,
+      "click-to-reveal": true,
+    },
+    "modules": [
+      "custom/tray",
+      "custom/endpoint",
+      "custom/hyprsunset",
+      "custom/colorpicker",
+      "tray",
+    ],
   },
 
   // Modules
@@ -70,9 +100,20 @@
   },
 
   "backlight": {
-    "format": "{icon}",
-    "format-icons": [[""]],
+    "format": "",
+    "tooltip-format": "Brightness: {percent}%",
+    "states": {
+      "dim": 0,
+      "low": 20,
+      "medium": 40,
+      "high": 60,
+      "full": 80,
+    },
+    "backlight/slider": {
+      "orientation": "horizontal",
+    },
   },
+
   "battery": {
     "interval": 30,
     "states": {
@@ -187,6 +228,10 @@
     "on-click": "~/.config/hypr/scripts/toggle-pavucontrol.sh",
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
   },
+  "pulseaudio/slider": {
+    "orientation": "horizontal",
+  },
+
   "temperature": {
     "critical-threshold": 80,
     // "format": "",
@@ -238,6 +283,10 @@
     "format": "   ",
     "tooltip-format": "Power Options",
     "on-click": "wlogout",
+  },
+  "custom/tray": {
+    "format": "",
+    "tooltip": false,
   },
   "custom/terminal": {
     "format": "",

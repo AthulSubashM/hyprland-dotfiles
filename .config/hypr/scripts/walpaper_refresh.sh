@@ -2,7 +2,7 @@
 
 pkill -x swayosd-server
 swayosd-server &
-waybar -s ~/.config/waybar/style.css
+touch ~/.config/waybar/style.css
 
 nm-sidebar --reload-css &
 makoctl reload &

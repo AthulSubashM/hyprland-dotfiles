@@ -46,7 +46,7 @@ toggle)
   pkill -RTMIN+9 waybar
   ;;
 
-up)
+down)
   debounce_scroll || exit 0
 
   NEW_TEMP=$((CURRENT_TEMP + STEP))
@@ -60,7 +60,7 @@ up)
   pkill -RTMIN+9 waybar
   ;;
 
-down)
+up)
   debounce_scroll || exit 0
 
   NEW_TEMP=$((CURRENT_TEMP - STEP))
@@ -76,9 +76,9 @@ down)
 
 get)
   if pgrep -x "hyprsunset" >/dev/null; then
-    echo "{\"text\": \"🌙${CURRENT_TEMP}K\", \"tooltip\": \"Hyprsunset: Active (${CURRENT_TEMP}K)\nScroll to adjust | Click to disable\", \"class\": \"active\"}"
+    echo "{\"text\": \"🌙\", \"tooltip\": \"Hyprsunset: Active (${CURRENT_TEMP}K)\", \"class\": \"active\"}"
   else
-    echo "{\"text\": \"☀\", \"tooltip\": \"Hyprsunset: Disabled\nClick to turn on (${CURRENT_TEMP}K)\", \"class\": \"inactive\"}"
+    echo "{\"text\": \"☀\", \"tooltip\": \"Hyprsunset: Disabled\", \"class\": \"inactive\"}"
   fi
   ;;
 esac
