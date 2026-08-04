@@ -136,7 +136,7 @@ hl.bind(Mod .. "+SHIFT+V", hl.dsp.exec_cmd("cliphist list | " .. menu .. " --dme
 -- Groups
 hl.bind(Mod .. "+G", hl.dsp.group.toggle())
 hl.bind(Mod .. "+ALT+Tab", hl.dsp.group.next())
-hl.bind(Mod .. "+Control_L+Tab", hl.dsp.group.prev())
+hl.bind(Mod .. "+CTRL+Tab", hl.dsp.group.prev())
 
 -- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
 -- Resize windows

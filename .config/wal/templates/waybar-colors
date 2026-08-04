@@ -76,6 +76,13 @@ tooltip {{
 #custom-tlp.power-saver {{
   color: #26a65b;
 }}
+#custom-hyprsunset label {{
+  font-size: 9pt;
+  padding-top: 1px;
+}}
+#custom-hyprsunset.inactive label {{
+  font-size:12pt;
+}}
 #custom-notification {{
   padding: 0px 10px;
   transition: all 0.3s ease;
@@ -186,7 +193,7 @@ tooltip {{
 
 #clock:hover,
 #custom-pacman:hover,
-#custom-notification:hover,
+#custom-expand:hover,
 #bluetooth:hover,
 #network:hover,
 #battery:hover,

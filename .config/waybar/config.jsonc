@@ -92,7 +92,16 @@
   //         "*": [ 1,2,3,4,5 ]
   //     }
   // },
-
+  "custom/hyprsunset": {
+    "exec": "~/.config/waybar/scripts/hyprsunset.sh get",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9,
+    "smooth-scrolling-threshold": 1,
+    "on-click": "~/.config/waybar/scripts/hyprsunset.sh toggle",
+    "on-scroll-up": "~/.config/waybar/scripts/hyprsunset.sh up",
+    "on-scroll-down": "~/.config/waybar/scripts/hyprsunset.sh down",
+  },
   "custom/notification": {
     "tooltip": false,
     //"format": "󰎟",
@@ -184,7 +193,7 @@
     "signal": 8,
   },
   "custom/expand": {
-    "format": "",
+    "format": " ",
     "tooltip": false,
   },
   "custom/endpoint": {
@@ -202,6 +211,7 @@
       "custom/expand",
       "tray",
       "custom/colorpicker",
+      "custom/hyprsunset",
       "cpu",
       "memory",
       "temperature",
