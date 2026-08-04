@@ -23,9 +23,13 @@
       "network",
       "bluetooth",
       "pulseaudio",
-      "battery",
+      "group/batteryoptions",
       "custom/power",
     ],
+  },
+  "group/batteryoptions": {
+    "orientation": "horizontal",
+    "modules": ["custom/tlp", "battery"],
   },
 
   "mpris": {
@@ -150,6 +154,7 @@
       "critical": 30,
       "verycritical": 10,
     },
+    "on-click": "~/.config/waybar/scripts/tlp_profiles.sh toggle",
     "tooltip-format": "{time}\t{capacity}%",
     "format": "{icon}",
     "format-critical": "{capacity}%",
@@ -171,6 +176,13 @@
   //     "signal": 8,
   //     "tooltip": false,
   // },
+  "custom/tlp": {
+    "exec": "~/.config/waybar/scripts/tlp_profiles.sh get",
+    "return-type": "json",
+    "interval": 10,
+    "on-click": "~/.config/waybar/scripts/tlp_profiles.sh toggle",
+    "signal": 8,
+  },
   "custom/expand": {
     "format": "",
     "tooltip": false,
