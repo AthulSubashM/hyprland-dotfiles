@@ -107,8 +107,21 @@ tooltip {{
   color: #ffbe61;
 }}
 
-#battery.critical {{
-  color: #f53c3c;
+#battery.verycritical {{
+  color: white;
+  font-weight: bolder;
+  background-color: #f53c3c;
+  border-radius: 10px;
+  border-color: alpha(@color1, 0.6);
+  margin-left: 6px;
+}}
+#privacy {{
+  margin-left: 8px;
+  padding: 0 6px;
+  transition: all 0.3s ease;
+  color: #26a65b;
+  background-color: white;
+  border-radius: 100px;
 }}
 
 @keyframes blink {{
@@ -136,7 +149,8 @@ tooltip {{
 #cpu,
 #memory,
 #temperature {{
-  padding: 0px 10px;
+  font-size: 10pt;
+  padding: 0px 5px;
   transition: all 0.3s ease;
   color: #ffffff;
 }}

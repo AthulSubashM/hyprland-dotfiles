@@ -19,6 +19,7 @@
     "orientation": "horizontal",
     "modules": [
       "group/expand",
+      "privacy",
       "network",
       "bluetooth",
       "pulseaudio",
@@ -34,6 +35,7 @@
     "player": "playerctld",
     "tooltip": true,
     "on-click": "playerctl play-pause",
+    "on-click-right": "bash -c 'PLAYER=$(playerctl metadata --format \"{{playerName}}\"); hyprctl dispatch \"hl.dsp.focus({window = \\\"class:$PLAYER\\\"})\"'",
     "on-click-forward": "playerctl next",
     "on-click-backward": "playerctl previous",
     "on-scroll-up": "playerctl next",
@@ -101,7 +103,12 @@
     "format": "{:%a, %d %b %I:%M %p} ",
     "interval": 15,
     "tooltip-format": "<tt>{calendar}</tt>",
-    "calendar": {},
+    "calendar": {
+      "format": {
+        "today": "<span color='#ffffff'><b>{}</b></span>",
+        "months": "<span color='#ffffff'><b>{}</b></span>",
+      },
+    },
     "actions": {
       "on-click-right": "shift_down",
       "on-click": "shift_up",
@@ -132,16 +139,21 @@
     "on-click": "~/.config/waybar/scripts/toggle-bluetooth-gui.sh",
     "on-click-right": "~/.config/hypr/scripts/toggle-bluetooth.sh",
   },
+  "privacy": {
+    "icon-size": 14,
+  },
   "battery": {
     "interval": 30,
     "states": {
       "good": 90,
       "warning": 60,
       "critical": 30,
+      "verycritical": 10,
     },
     "tooltip-format": "{time}\t{capacity}%",
     "format": "{icon}",
     "format-critical": "{capacity}%",
+    "format-verycritical": " ATHUL!! PLUG IN YOUR LAPTOP {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " 󰂄",
     "format-alt": "{capacity}% {icon}",
@@ -193,15 +205,19 @@
     "signal": 1,
   },
   "cpu": {
-    "format": "󰻠",
+    // "format": "󰻠",
+    "format": "{usage}%",
     "tooltip": true,
   },
   "memory": {
-    "format": "",
+    // "format": "",
+    "format": "{used:0.1f}GB",
+    "tooltip-format": "RAM used: {percentage}%\nSWAP used: {swapPercentage}%",
   },
   "temperature": {
     "critical-threshold": 80,
-    "format": "",
+    // "format": "",
+    "format": "{temperatureC}°C",
   },
   "tray": {
     "icon-size": 14,
