@@ -4,6 +4,7 @@ require("settings.keybinds.mouse")
 require("settings.keybinds.screen-binds")
 require("settings.keybinds.volume-binds")
 require("settings.keybinds.workspaces-binds")
+require("settings.keybinds.layouts")
 
 --------------------
 --    PROGRAMS    --
@@ -71,59 +72,15 @@ hl.bind("Num_Lock", hl.dsp.exec_cmd("swayosd-client --num-lock"))
 --    MENU BINDS    --
 ----------------------
 --See windowrules for notes
-hl.bind(
-	Mod .. "+N",
-	hl.dsp.exec_cmd("env YAZI_CONFIG_HOME=$HOME/.config/yazi/notes alacritty -T 'notes' -e yazi '~/Documents/notes'")
-)
+-- hl.bind(
+-- Mod .. "+N",
+-- hl.dsp.exec_cmd("env YAZI_CONFIG_HOME=$HOME/.config/yazi/notes alacritty -T 'notes' -e yazi '~/Documents/notes'")
+-- )
+hl.bind(Mod .. " + N", hl.dsp.exec_cmd("marktext"))
 hl.bind(Mod .. "+M", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/man_pages.sh"))
 hl.bind(Mod .. "+Z", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/kill_process.sh"))
 hl.bind(Mod .. "+ALT+M", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu/arch_wiki_search.sh"))
 hl.bind(Mod .. "+R", hl.dsp.exec_cmd("~/.config/hypr/scripts/rename_workspace.sh"))
-
---------------------------
---    WINDOW CONTROLS   --
---------------------------
--- Groups
-hl.bind(Mod .. "+G", hl.dsp.group.toggle())
-hl.bind(Mod .. "+ALT+Tab", hl.dsp.group.next())
-hl.bind(Mod .. "+Control_L+Tab", hl.dsp.group.prev())
-
--- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
--- Resize windows
-
-hl.bind(Mod .. " + minus", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
-hl.bind(Mod .. " + SHIFT + minus", hl.dsp.window.resize({ x = 0, y = -200, relative = true }))
-hl.bind(Mod .. " + equal", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
-hl.bind(Mod .. " + SHIFT + equal", hl.dsp.window.resize({ x = 0, y = 200, relative = true }))
-
-hl.bind(Mod .. " + mouse:275", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
-hl.bind(Mod .. " + mouse:276", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
---
--- Move/resize windows with Mod + LMB/RMB and dragging
-hl.bind(Mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(Mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind(Mod .. " + mouse:274", hl.dsp.window.drag(), { mouse = true })
-
--- Move focus with Mod + arrow keys
-hl.bind(Mod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(Mod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(Mod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(Mod .. " + down", hl.dsp.focus({ direction = "down" }))
-
--- Modes
-hl.bind(Mod .. "+K", hl.dsp.window.fullscreen())
-hl.bind(Mod .. "+F", hl.dsp.window.float())
-hl.bind(Mod .. "+P", hl.dsp.window.pin())
-hl.bind(Mod .. "+SHIFT+F", hl.dsp.exec_cmd(" ~/.config/hypr/scripts/mini_player.sh"))
-hl.bind(Mod .. "+ALT+P", hl.dsp.window.pseudo())
-hl.bind(Mod .. "+J", hl.dsp.layout("togglesplit"))
--- hl.bind(Mod.."+TAB", hl.dsp.window.fullscreen())
--- bind = $mod, TAB, hyprexpo:expo, toggle - Hyprexpo
--- hl.bind(Mod .. "+TAB", "hymission:toggle")
-
-hl.bind(Mod .. "+O", hl.dsp.window.set_prop({ prop = "opaque", value = 1 }))
-hl.bind(Mod .. "+ALT+O", hl.dsp.window.set_prop({ prop = "opaque", value = 0 }))
-
 -----------------------
 --    APPLICATIONS   --
 -----------------------
@@ -172,6 +129,46 @@ hl.bind(Mod .. "+ CTRL + PRINT", hl.dsp.exec_cmd("flameshot full -c")) -- full t
 --
 -- Clipboard
 hl.bind(Mod .. "+SHIFT+V", hl.dsp.exec_cmd("cliphist list | " .. menu .. " --dmenu | cliphist decode | wl-copy"))
+
+--------------------------
+--    WINDOW CONTROLS   --
+--------------------------
+-- Groups
+hl.bind(Mod .. "+G", hl.dsp.group.toggle())
+hl.bind(Mod .. "+ALT+Tab", hl.dsp.group.next())
+hl.bind(Mod .. "+Control_L+Tab", hl.dsp.group.prev())
+
+-- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
+-- Resize windows
+
+hl.bind(Mod .. " + minus", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
+hl.bind(Mod .. " + SHIFT + minus", hl.dsp.window.resize({ x = 0, y = -200, relative = true }))
+hl.bind(Mod .. " + equal", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
+hl.bind(Mod .. " + SHIFT + equal", hl.dsp.window.resize({ x = 0, y = 200, relative = true }))
+
+hl.bind(Mod .. " + mouse:275", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
+hl.bind(Mod .. " + mouse:276", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
+--
+-- Move/resize windows with Mod + LMB/RMB and dragging
+hl.bind(Mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(Mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(Mod .. " + mouse:274", hl.dsp.window.drag(), { mouse = true })
+
+-- Move focus with Mod + arrow keys
+hl.bind(Mod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(Mod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(Mod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(Mod .. " + down", hl.dsp.focus({ direction = "down" }))
+
+-- Modes
+hl.bind(Mod .. "+K", hl.dsp.window.fullscreen())
+hl.bind(Mod .. "+F", hl.dsp.window.float())
+hl.bind(Mod .. "+P", hl.dsp.window.pin())
+hl.bind(Mod .. "+SHIFT+F", hl.dsp.exec_cmd(" ~/.config/hypr/scripts/mini_player.sh"))
+hl.bind(Mod .. "+ALT+P", hl.dsp.window.pseudo())
+
+hl.bind(Mod .. "+O", hl.dsp.window.set_prop({ prop = "opaque", value = 1 }))
+hl.bind(Mod .. "+ALT+O", hl.dsp.window.set_prop({ prop = "opaque", value = 0 }))
 
 ---------------------------
 --    SWITCHERS & MODES  --

@@ -24,7 +24,7 @@ hl.config({
 		resize_on_border = true,
 		allow_tearing = false,
 		layout = "dwindle",
-		--layout = scrolling,
+		-- layout = "scrolling",
 	},
 
 	-- https://wiki.hypr.land/Configuring/Variables/#decoration
@@ -33,8 +33,8 @@ hl.config({
 		rounding_power = 2,
 
 		-- Change transparency of focused and unfocused windows
-		active_opacity = 0.95,
-		inactive_opacity = 0.75,
+		active_opacity = 0.98,
+		inactive_opacity = 0.85,
 		fullscreen_opacity = 1,
 
 		shadow = {
@@ -58,6 +58,9 @@ hl.config({
 
 	animations = {
 		enabled = true,
+	},
+	scrolling = {
+		column_width = 0.495,
 	},
 
 	-- See https://wiki.hypr.land/Configuring/Dwindle-Layout/ for more
