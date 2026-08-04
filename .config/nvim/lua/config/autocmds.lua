@@ -6,3 +6,12 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+-- Disable LSP diagnostics for Waybar GTK-CSS files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*/.config/waybar/*.css",
+  callback = function(args)
+    -- Disable LSP diagnostics for this buffer
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})

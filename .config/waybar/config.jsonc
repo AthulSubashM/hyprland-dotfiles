@@ -2,11 +2,12 @@
   "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
-  "modules-left": ["group/left", "mpris"],
-  // "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["group/right"],
 
+  "modules-left": ["group/left", "mpris"],
+  "modules-right": ["group/right"],
   "modules-center": ["clock"],
+
+  // Groups
   "group/left": {
     "orientation": "horizontal",
     "modules": [
@@ -27,30 +28,31 @@
       "custom/power",
     ],
   },
+
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-to-left": true,
+      "click-to-reveal": true,
+    },
+    "modules": [
+      "custom/expand",
+      "tray",
+      "custom/colorpicker",
+      "custom/hyprsunset",
+      "cpu",
+      "memory",
+      "temperature",
+      "custom/endpoint",
+    ],
+  },
   "group/batteryoptions": {
     "orientation": "horizontal",
     "modules": ["custom/tlp", "battery"],
   },
 
-  "mpris": {
-    "format": "{artist} - {title}",
-    "format-playing": "   {artist} - {title}",
-    "format-paused": "   {artist} - {title}",
-    "player": "playerctld",
-    "tooltip": true,
-    "on-click": "playerctl play-pause",
-    "on-click-right": "bash -c 'PLAYER=$(playerctl metadata --format \"{{playerName}}\"); hyprctl dispatch \"hl.dsp.focus({window = \\\"class:$PLAYER\\\"})\"'",
-    "on-click-forward": "playerctl next",
-    "on-click-backward": "playerctl previous",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous",
-    "format-icons": {
-      "Playing": "  ",
-      "Paused": "  ",
-    },
-    "max-length": 50,
-  },
-
+  // Modules
   "hyprland/workspaces": {
     "format": "{name}",
     "format-window-separator": "\n",
@@ -67,93 +69,9 @@
     },
   },
 
-  "hyprland/window": {
-    "format": "{title}",
-    "icon-size": 16,
-    "icon": true,
-    "max-length": 60,
-  },
-
-  // "custom/workspaces": {
-  //  "format": "{icon}",
-  //  "exec": "~/.config/hypr/scripts/get_workspace_icons.sh",
-  //   "return-type": "json",
-  //  "interval": 1,
-  // },
-
-  // "hyprland/workspaces": {
-  //     "format": "{icon}",
-  //     "format-icons": {
-  //         "active": "",
-  //         "default": "",
-  //         "empty": ""
-  //     },
-  //     "persistent-workspaces": {
-  //         "*": [ 1,2,3,4,5 ]
-  //     }
-  // },
-  "custom/hyprsunset": {
-    "exec": "~/.config/waybar/scripts/hyprsunset.sh get",
-    "return-type": "json",
-    "interval": 5,
-    "signal": 9,
-    "smooth-scrolling-threshold": 1,
-    "on-click": "~/.config/waybar/scripts/hyprsunset.sh toggle",
-    "on-scroll-up": "~/.config/waybar/scripts/hyprsunset.sh up",
-    "on-scroll-down": "~/.config/waybar/scripts/hyprsunset.sh down",
-  },
-  "custom/notification": {
-    "tooltip": false,
-    //"format": "󰎟",
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/notification_status.sh",
-    "on-click": "~/.config/hypr/scripts/dmenu/notifications_history.sh",
-    "on-click-right": "makoctl dismiss -a",
-    "interval": 60,
-    "escape": true,
-  },
-  "clock": {
-    "format": "{:%a, %d %b %I:%M %p} ",
-    "interval": 15,
-    "tooltip-format": "<tt>{calendar}</tt>",
-    "calendar": {
-      "format": {
-        "today": "<span color='#ffffff'><b>{}</b></span>",
-        "months": "<span color='#ffffff'><b>{}</b></span>",
-      },
-    },
-    "actions": {
-      "on-click-right": "shift_down",
-      "on-click": "shift_up",
-    },
-  },
-  "network": {
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-disconnected": "",
-    "interval": 60,
-    "tooltip-format-disconnected": "Error",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ifname} 🖧 ",
-    // "on-click": "~/.config/waybar/scripts/toggle-network-gui.sh",
-    "on-click": "nm-sidebar --toggle",
-  },
-  "bluetooth": {
-    "format-on": "󰂯",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "interval": 60,
-    "format-connected-battery": "{device_battery_percentage}% 󰂯",
-    "format-alt": "{device_alias} 󰂯",
-    "tooltip-format": "{num_connections} connected",
-    "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_battery_percentage}%",
-    "on-click": "~/.config/waybar/scripts/toggle-bluetooth-gui.sh",
-    "on-click-right": "~/.config/hypr/scripts/toggle-bluetooth.sh",
-  },
-  "privacy": {
-    "icon-size": 14,
+  "backlight": {
+    "format": "{icon}",
+    "format-icons": [[""]],
   },
   "battery": {
     "interval": 30,
@@ -176,55 +94,34 @@
       "on-discharging-critical": "notify-send -u critical -t 5000 'Battery Critical!' 'Your battery level is low.'",
     },
   },
-  // "custom/pacman": {
-  //     "format": "󰅢 {}",
-  //     "interval": 30,
-  //     "exec": "checkupdates | wc -l",
-  //     "exec-if": "exit 0",
-  //     "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-  //     "signal": 8,
-  //     "tooltip": false,
-  // },
-  "custom/tlp": {
-    "exec": "~/.config/waybar/scripts/tlp_profiles.sh get",
-    "return-type": "json",
-    "interval": 10,
-    "on-click": "~/.config/waybar/scripts/tlp_profiles.sh toggle",
-    "signal": 8,
+  "bluetooth": {
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "interval": 60,
+    "format-connected-battery": "{device_battery_percentage}% 󰂯",
+    "format-alt": "{device_alias} 󰂯",
+    "tooltip-format": "{num_connections} connected",
+    "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_battery_percentage}%",
+    "on-click": "~/.config/waybar/scripts/toggle-bluetooth-gui.sh",
+    "on-click-right": "~/.config/hypr/scripts/toggle-bluetooth.sh",
   },
-  "custom/expand": {
-    "format": " ",
-    "tooltip": false,
-  },
-  "custom/endpoint": {
-    "format": "|",
-    "tooltip": false,
-  },
-  "group/expand": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "transition-to-left": true,
-      "click-to-reveal": true,
+  "clock": {
+    "format": "{:%a, %d %b %I:%M %p} ",
+    "interval": 15,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "today": "<span color='#ffffff'><b>{}</b></span>",
+        "months": "<span color='#ffffff'><b>{}</b></span>",
+      },
     },
-    "modules": [
-      "custom/expand",
-      "tray",
-      "custom/colorpicker",
-      "custom/hyprsunset",
-      "cpu",
-      "memory",
-      "temperature",
-      "custom/endpoint",
-    ],
-  },
-  "custom/colorpicker": {
-    "format": "{}",
-    "return-type": "json",
-    "interval": "once",
-    "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
-    "on-click": "~/.config/waybar/scripts/colorpicker.sh",
-    "signal": 1,
+    "actions": {
+      "on-click-right": "shift_down",
+      "on-click": "shift_up",
+    },
   },
   "cpu": {
     // "format": "󰻠",
@@ -236,21 +133,38 @@
     "format": "{used:0.1f}GB",
     "tooltip-format": "RAM used: {percentage}%\nSWAP used: {swapPercentage}%",
   },
-  "temperature": {
-    "critical-threshold": 80,
-    // "format": "",
-    "format": "{temperatureC}°C",
+  "mpris": {
+    "format": "{artist} - {title}",
+    "format-playing": "   {artist} - {title}",
+    "format-paused": "   {artist} - {title}",
+    "player": "playerctld",
+    "tooltip": true,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "bash -c 'PLAYER=$(playerctl metadata --format \"{{playerName}}\"); hyprctl dispatch \"hl.dsp.focus({window = \\\"class:$PLAYER\\\"})\"'",
+    "on-click-forward": "playerctl next",
+    "on-click-backward": "playerctl previous",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "format-icons": {
+      "Playing": "  ",
+      "Paused": "  ",
+    },
+    "max-length": 50,
   },
-  "tray": {
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "",
+    "interval": 60,
+    "tooltip-format-disconnected": "Error",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} 🖧 ",
+    // "on-click": "~/.config/waybar/scripts/toggle-network-gui.sh",
+    "on-click": "nm-sidebar --toggle",
+  },
+  "privacy": {
     "icon-size": 14,
-    "spacing": 10,
   },
-
-  "backlight": {
-    "format": "{icon}",
-    "format-icons": [[""]],
-  },
-
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "{icon}",
@@ -273,6 +187,53 @@
     "on-click": "~/.config/hypr/scripts/toggle-pavucontrol.sh",
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
   },
+  "temperature": {
+    "critical-threshold": 80,
+    // "format": "",
+    "format": "{temperatureC}°C",
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10,
+  },
+
+  // Custom
+  "custom/colorpicker": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": "once",
+    "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
+    "on-click": "~/.config/waybar/scripts/colorpicker.sh",
+    "signal": 1,
+  },
+  "custom/endpoint": {
+    "format": "|",
+    "tooltip": false,
+  },
+  "custom/expand": {
+    "format": " ",
+    "tooltip": false,
+  },
+  "custom/hyprsunset": {
+    "exec": "~/.config/waybar/scripts/hyprsunset.sh get",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9,
+    "smooth-scrolling-threshold": 1,
+    "on-click": "~/.config/waybar/scripts/hyprsunset.sh toggle",
+    "on-scroll-up": "~/.config/waybar/scripts/hyprsunset.sh up",
+    "on-scroll-down": "~/.config/waybar/scripts/hyprsunset.sh down",
+  },
+  "custom/notification": {
+    "tooltip": false,
+    //"format": "󰎟",
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/notification_status.sh",
+    "on-click": "~/.config/hypr/scripts/dmenu/notifications_history.sh",
+    "on-click-right": "makoctl dismiss -a",
+    "interval": 60,
+    "escape": true,
+  },
   "custom/power": {
     "format": "   ",
     "tooltip-format": "Power Options",
@@ -282,5 +243,12 @@
     "format": "",
     "tooltip-format": "Open Terminal",
     "on-click": "kitty -d ~",
+  },
+  "custom/tlp": {
+    "exec": "~/.config/waybar/scripts/tlp_profiles.sh get",
+    "return-type": "json",
+    "interval": 10,
+    "on-click": "~/.config/waybar/scripts/tlp_profiles.sh toggle",
+    "signal": 8,
   },
 }
