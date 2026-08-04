@@ -122,6 +122,10 @@ tooltip {{
 #battery.warning {{
   color: #ffbe61;
 }}
+#battery.critical {{
+  color: #f53c3c;
+  font-weight: bolder;
+}}
 
 #battery.verycritical {{
   color: white;
