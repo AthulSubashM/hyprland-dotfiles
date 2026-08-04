@@ -47,8 +47,18 @@
 
   "hyprland/workspaces": {
     "format": "{name}",
-    "format-window-separator": "",
+    "format-window-separator": "\n",
+    "tooltip": true,
     "show-special": true,
+    "tooltips": {
+      "default": "{windows}",
+      "empty": "",
+    },
+    "window-rewrite-default": "{title}",
+    "window-rewrite": {
+      "title<([^-]+?)\\s*-.*>": " - ({class}) $1",
+      "title<.*>": " - ({class}) {title}",
+    },
   },
 
   "hyprland/window": {
@@ -91,11 +101,7 @@
     "format": "{:%a, %d %b %I:%M %p} ",
     "interval": 15,
     "tooltip-format": "<tt>{calendar}</tt>",
-    "calendar": {
-      "format": {
-        "today": "<span color='#fAfBfC'><b>{}</b></span>",
-      },
-    },
+    "calendar": {},
     "actions": {
       "on-click-right": "shift_down",
       "on-click": "shift_up",
