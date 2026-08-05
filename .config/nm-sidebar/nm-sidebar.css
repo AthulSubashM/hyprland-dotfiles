@@ -11,11 +11,12 @@ dialog.nm-sidebar-dialog bottom-sheet > dimming {
 }
 
 .nm-sidebar-panel {
-  background: alpha(@background, 0.6);
-  border-radius: 10px;
+  background: alpha(@color1, 0.6);
+  border-radius: 10px 0 0 0px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-left: 1px solid alpha(@foreground, 0.12);
-  margin: 8px;
+  margin: 0px;
+  color: white;
 }
 
 .network-scroll-fade {
@@ -23,23 +24,11 @@ dialog.nm-sidebar-dialog bottom-sheet > dimming {
 }
 
 .network-scroll-fade-top {
-  background: linear-gradient(
-    to bottom,
-    @background 0%,
-    @background 28%,
-    alpha(@background, 0.72) 58%,
-    alpha(@background, 0)
-  );
+  background: none;
 }
 
 .network-scroll-fade-bottom {
-  background: linear-gradient(
-    to top,
-    @background 0%,
-    @background 28%,
-    alpha(@background, 0.72) 58%,
-    alpha(@background, 0)
-  );
+  background: none;
 }
 
 .network-subgroup {
@@ -56,8 +45,8 @@ dialog.nm-sidebar-dialog bottom-sheet > dimming {
   font-weight: 700;
 }
 .active-connection-row {
-  background: alpha(@color7, 0.6);
-  color: @background;
+  background: alpha(@color9, 0.6);
+  color: black;
 }
 
 .active-connection-row:hover {
@@ -102,4 +91,11 @@ dialog.nm-sidebar-dialog bottom-sheet > dimming {
 
 switch:checked {
   background: @color1;
+}
+switch slider {
+  background: @foreground;
+}
+row {
+  background: @color1;
+  color: white;
 }

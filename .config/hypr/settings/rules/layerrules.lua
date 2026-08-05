@@ -7,9 +7,10 @@ hl.layer_rule({
 })
 
 hl.layer_rule({
-	name = "nm-sidebar-blur",
+	name = "nm-sidebar",
 	match = { namespace = "nm-sidebar" },
 	blur = true,
+	animation = "slide right",
 	ignore_alpha = 0.5,
 })
 

@@ -3,8 +3,6 @@ check() {
   command -v "$1" 1>/dev/null
 }
 
-
-
 loc="$HOME/.cache/colorpicker"
 [ -d "$loc" ] || mkdir -p "$loc"
 [ -f "$loc/colors" ] || touch "$loc/colors"
@@ -24,13 +22,13 @@ limit=10
   # allcolors=($(tail -n +2 "$loc/colors"))
   tooltip="<b>   COLORS</b>\n\n"
 
-  tooltip+="-> <b>$text</b>  <span color='$text'></span>  \n"
+  tooltip+="<tt>-> <b>$text</b></tt>  <span color='$text'></span>  \n"
   for i in "${allcolors[@]}"; do
-    tooltip+="   <b>$i</b>  <span color='$i'></span>  \n"
+    tooltip+="<tt>   <b>$i</b></tt>  <span color='$i'></span>  \n"
   done
 
   cat <<EOF
-{ "text":"<span color='$text'></span>", "tooltip":"$tooltip"}  
+{ "text":"<span color='$text'>󰏘</span>", "tooltip":"$tooltip"}  
 EOF
 
   exit

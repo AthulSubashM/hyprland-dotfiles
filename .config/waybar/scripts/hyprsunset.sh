@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 STATE_FILE="/tmp/hyprsunset_temp"
-LOCK_FILE="/tmp/hyprsunset_scroll.lock"
 NOTIF_STATE_FILE="/tmp/hyprsunset_notif.state"
 CHANGING_LOCK="/tmp/hyprsunset_changing.lock"
+PENDING_TEMP_FILE="/tmp/hyprsunset_pending.pid"
 
 DEFAULT_TEMP=3500 # Default warm temp (K)
 STEP=500          # Step for temp changes
@@ -26,34 +26,38 @@ send_notification() {
   fi
 }
 
-set_temp() {
+apply_hyprsunset() {
   local target_temp=$1
-  echo "$target_temp" >"$STATE_FILE"
-
-  # Create changing lock so 'get' ignores temporary process death
   touch "$CHANGING_LOCK"
 
-  # Force kill any running instances and wait until released
+  # Kill existing hyprsunset
   pkill -9 -x hyprsunset >/dev/null 2>&1
   while pgrep -x hyprsunset >/dev/null; do
     sleep 0.01
   done
 
-  # Launch new instance detached from process tree
+  # Launch new instance
   nohup hyprsunset -t "$target_temp" >/dev/null 2>&1 &
-
-  # Give process a brief moment to spawn, then remove lock
-  (sleep 0.2 && rm -f "$CHANGING_LOCK") &
+  (sleep 0.25 && rm -f "$CHANGING_LOCK") &
 }
 
-# Debounce scroll actions using a lockfile to prevent rapid-fire process collisions
-debounce_scroll() {
-  if [ -f "$LOCK_FILE" ]; then
-    return 1
+# Schedule a single execution after user stops scrolling for 200ms
+schedule_temp_apply() {
+  # Kill previous pending timer if user is still scrolling
+  if [ -f "$PENDING_TEMP_FILE" ]; then
+    kill "$(cat "$PENDING_TEMP_FILE")" >/dev/null 2>&1
+    rm -f "$PENDING_TEMP_FILE"
   fi
-  touch "$LOCK_FILE"
-  (sleep 0.15 && rm -f "$LOCK_FILE") &
-  return 0
+
+  (
+    sleep 0.2
+    TARGET=$(cat "$STATE_FILE")
+    if pgrep -x "hyprsunset" >/dev/null; then
+      apply_hyprsunset "$TARGET"
+    fi
+    rm -f "$PENDING_TEMP_FILE"
+  ) &
+  echo $! >"$PENDING_TEMP_FILE"
 }
 
 case "$1" in
@@ -63,7 +67,7 @@ toggle)
     echo "OFF" >"$NOTIF_STATE_FILE"
     send_notification "OFF"
   else
-    set_temp "$CURRENT_TEMP"
+    apply_hyprsunset "$CURRENT_TEMP"
     echo "ON" >"$NOTIF_STATE_FILE"
     send_notification "ON"
   fi
@@ -71,31 +75,27 @@ toggle)
   ;;
 
 down)
-  debounce_scroll || exit 0
-
   NEW_TEMP=$((CURRENT_TEMP + STEP))
   if [ "$NEW_TEMP" -gt 6500 ]; then NEW_TEMP=6500; fi
 
-  if pgrep -x "hyprsunset" >/dev/null; then
-    set_temp "$NEW_TEMP"
-  else
-    echo "$NEW_TEMP" >"$STATE_FILE"
-  fi
+  echo "$NEW_TEMP" >"$STATE_FILE"
   pkill -RTMIN+9 waybar
+
+  if pgrep -x "hyprsunset" >/dev/null; then
+    schedule_temp_apply
+  fi
   ;;
 
 up)
-  debounce_scroll || exit 0
-
   NEW_TEMP=$((CURRENT_TEMP - STEP))
   if [ "$NEW_TEMP" -lt 1000 ]; then NEW_TEMP=1000; fi
 
-  if pgrep -x "hyprsunset" >/dev/null; then
-    set_temp "$NEW_TEMP"
-  else
-    echo "$NEW_TEMP" >"$STATE_FILE"
-  fi
+  echo "$NEW_TEMP" >"$STATE_FILE"
   pkill -RTMIN+9 waybar
+
+  if pgrep -x "hyprsunset" >/dev/null; then
+    schedule_temp_apply
+  fi
   ;;
 
 get)
@@ -104,7 +104,6 @@ get)
     PREV_NOTIF_STATE=$(cat "$NOTIF_STATE_FILE")
   fi
 
-  # If a temp adjustment is actively restarting the binary, skip state changes & notifications
   if [ -f "$CHANGING_LOCK" ]; then
     echo "{\"text\": \"🌙\", \"tooltip\": \"Hyprsunset: Active (${CURRENT_TEMP}K)\", \"class\": \"active\"}"
     exit 0
@@ -121,7 +120,7 @@ get)
       echo "OFF" >"$NOTIF_STATE_FILE"
       send_notification "OFF"
     fi
-    echo "{\"text\": \"☀\", \"tooltip\": \"Hyprsunset: Disabled\", \"class\": \"inactive\"}"
+    echo "{\"text\": \"🌙\", \"tooltip\": \"Hyprsunset: Disabled\", \"class\": \"inactive\"}"
   fi
   ;;
 esac

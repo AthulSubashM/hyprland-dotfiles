@@ -4,6 +4,7 @@ hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36,
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
+hl.curve("slide", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 
 -- Default springs
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
@@ -25,25 +26,5 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almo
 hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
--- bezier = bounce, 0.05, 0.9, 0.1, 1.1
 
---   # Default animations, see https://wiki.hypr.land/Configuring/Animations/
---   #           NAME,          ONOFF, SPEED, CURVE,        [STYLE]
---   animation = global,        1,     10,    default
---   animation = border,        1,     5.39,  easeOutQuint
---   animation = windows,       1,     4.79,  easeOutQuint, slide
---   animation = windowsIn,     1,     4.1,   easeOutQuint, popin 20%
---   animation = windowsOut,    1,     2,  easeOutQuint, popin 20%
---   animation = fadeIn,        1,     1.73,  almostLinear
---   animation = fadeOut,       1,     1.46,  almostLinear
---   animation = fade,          1,     3.03,  quick
---   animation = layers,        1,     3.81,  easeOutQuint, popin
---   animation = layersIn,      1,     5,     easeOutQuint, popin
---   animation = layersOut,     1,     2,   linear,       fade
---   animation = fadeLayersIn,  1,     1.79,  almostLinear
---   animation = fadeLayersOut, 1,     1.39,  almostLinear
---   animation = workspaces,    1,     3,  easeInOutCubic, slidefade 20%
---   animation = workspacesIn,  1,     3,  easeInOutCubic, slidefade 20%
---   animation = workspacesOut, 1,     2,  easeInOutCubic, slidefade 20%
---   animation = zoomFactor,    1,     7,     quick
--- }
+hl.animation({ leaf = "layers", enabled = true, speed = 3, bezier = "slide", style = "slide right" })
