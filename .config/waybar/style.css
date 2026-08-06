@@ -133,7 +133,7 @@ tooltip {
 }
 
 #bluetooth {
-  padding-left: 10px;
+  padding-left: 6px;
   padding-right: 6px;
   transition: all 0.3s ease;
   color: @white;

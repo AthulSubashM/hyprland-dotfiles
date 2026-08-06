@@ -1,0 +1,51 @@
+@import "colors.css";
+
+window.background.maximized.tiled grid menubar {
+  background: alpha(@color1, 0.8);
+  color: #ffffff;
+  border: none;
+}
+window.background.maximized.tiled grid menubar menuitem window menu,
+window.background.maximized.tiled
+  grid
+  scrolledwindow
+  treeview
+  header
+  button
+  box {
+  background: alpha(@color2, 0.8);
+}
+
+window.background.maximized.tiled grid menubar menuitem:hover {
+  background-image: none;
+  background-color: @color5;
+  box-shadow: none;
+  color: #ffffff;
+}
+
+window.background.maximized.tiled grid toolbar,
+window.background.maximized.tiled grid scrolledwindow treeview {
+  background: alpha(@color1, 0.6);
+}
+window.background.maximized.tiled grid scrolledwindow {
+  border: none;
+}
+window.background.maximized.tiled grid toolbar toolbutton button {
+  color: #ffffff;
+}
+window.background.maximized.tiled grid toolbar toolbutton button:hover {
+  background-image: none;
+  transition: none;
+  background-color: @color5;
+}
+window.background.maximized.tiled grid toolbar toolitem switch {
+  background-color: @color2;
+}
+window.background.maximized.tiled grid toolbar toolitem switch slider {
+  background-image: none;
+  background-color: @color5;
+}
+
+window.background.maximized.tiled grid scrolledwindow + box {
+  background: alpha(@color1, 0.6);
+}

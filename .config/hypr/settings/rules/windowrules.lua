@@ -45,10 +45,12 @@ hl.window_rule({
 	name = "blueman",
 	match = { class = "^(blueman-manager)$" },
 	float = true,
-	size = { "monitor_w * 0.3", "monitor_h * 0.5" },
-	move = { "monitor_w * 0.69", "monitor_h * 0.05" },
+	size = { "monitor_w * 0.3", "monitor_h * 0.4" },
+	move = { "monitor_w * 0.698", "monitor_h * 0.037" },
 	animation = "slide",
 	border_size = 0,
+	opacity = "0.9",
+	opaque = false,
 })
 hl.window_rule({
 	name = "overskride",
@@ -69,7 +71,7 @@ hl.window_rule({
 	move = { "monitor_w * 0.699", "monitor_h * 0.037" },
 	animation = "slide",
 	border_size = 0,
-	opacity = "0.8",
+	opacity = "0.9",
 	opaque = false,
 })
 hl.window_rule({
