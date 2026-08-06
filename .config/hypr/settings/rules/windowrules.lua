@@ -20,6 +20,12 @@ hl.window_rule({
 	no_focus = true,
 })
 
+-- Floating general rule
+hl.window_rule({
+	name = "float-opaque",
+	match = { float = true },
+	opaque = true,
+})
 -- Define your colors
 local mauve = "0xffcba6f7"
 local crust = "0xff11111b"
@@ -59,10 +65,12 @@ hl.window_rule({
 	name = "pavucontrol",
 	match = { class = "^(org.pulseaudio.pavucontrol)$" },
 	float = true,
-	size = { "monitor_w * 0.3", "monitor_h * 0.4" },
-	move = { "monitor_w * 0.69", "monitor_h * 0.05" },
+	size = { "monitor_w * 0.3", "monitor_h * 0.3" },
+	move = { "monitor_w * 0.699", "monitor_h * 0.037" },
 	animation = "slide",
 	border_size = 0,
+	opacity = "0.8",
+	opaque = false,
 })
 hl.window_rule({
 	name = "pwvucontrol",
@@ -165,13 +173,6 @@ hl.window_rule({
 	-- FIXED: In 0.55+, colors are often defined as 'border_color'
 	-- and accept a string or table gradient
 	border_color = mauve .. " " .. crust,
-	opaque = true,
-})
-
--- Floating general rule
-hl.window_rule({
-	name = "float-opaque",
-	match = { float = true },
 	opaque = true,
 })
 

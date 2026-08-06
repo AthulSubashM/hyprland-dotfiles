@@ -1,0 +1,120 @@
+@import "colors.css";
+
+window.pavucontrol-window notebook header {
+  background: alpha(@color1, 0.8);
+  color: #ffffff;
+  border: none;
+}
+window.pavucontrol-window notebook header tabs tab {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+window.pavucontrol-window notebook header tabs tab:hover,
+window.pavucontrol-window notebook header tabs tab:checked {
+  outline-style: none;
+  box-shadow: none;
+  border-radius: 10px 10px 0 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: @color2;
+}
+window.pavucontrol-window notebook header tabs tab:checked {
+  font-weight: bold;
+}
+
+window.pavucontrol-window notebook stack {
+  background: alpha(@color1, 0.6);
+}
+window.pavucontrol-window
+  notebook
+  stack
+  box
+  scrolledwindow
+  viewport
+  button.toggle {
+  background-color: @color2;
+  background-image: none;
+  border-color: @background;
+}
+window.pavucontrol-window notebook stack box box button {
+  background-color: alpha(@color2, 0.8);
+  background-image: none;
+  color: #ffffff;
+}
+window.pavucontrol-window notebook stack combobox popover {
+  background-color: none;
+}
+window.pavucontrol-window notebook stack combobox popover contents,
+window.pavucontrol-window
+  notebook
+  stack
+  combobox
+  popover
+  contents
+  scrolledwindow {
+  background-color: alpha(@color2, 0.8);
+}
+window.pavucontrol-window notebook stack scrolledwindow button.toggle:hover,
+window.pavucontrol-window notebook stack combobox popover modelbutton:selected,
+window.pavucontrol-window notebook stack combobox popover modelbutton:hover {
+  background-color: @color5;
+}
+
+window.pavucontrol-window notebook stack scrolledwindow box scale trough,
+window.pavucontrol-window notebook stack scrolledwindow box progressbar trough {
+  background-color: alpha(@color7, 0.4);
+}
+window.pavucontrol-window
+  notebook
+  stack
+  scrolledwindow
+  box
+  scale
+  trough
+  slider {
+  background-image: none;
+  background-color: @color5;
+  border-radius: 100px;
+  min-height: 26px;
+  min-width: 26px;
+}
+window.pavucontrol-window
+  notebook
+  stack
+  scrolledwindow
+  box
+  scale
+  trough
+  highlight,
+window.pavucontrol-window
+  notebook
+  stack
+  scrolledwindow
+  box
+  progressbar
+  trough
+  progress {
+  background-color: @color5;
+}
+window.pavucontrol-window notebook stack scrolledwindow box scale marks {
+  color: @foreground;
+}
+
+window.pavucontrol-window
+  notebook
+  stack
+  scrolledwindow
+  box
+  expander-widget
+  spinbutton {
+  background-color: alpha(@color10, 0.6);
+}
+
+window.pavucontrol-window notebook stack box separator {
+  background-color: alpha(@color5, 0);
+}
+window.pavucontrol-window notebook stack scrolledwindow button.toggle:checked {
+  background-color: @color5;
+}
