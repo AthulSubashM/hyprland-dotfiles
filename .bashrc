@@ -58,6 +58,6 @@ export FZF_DEFAULT_OPTS=" \
 eval "$(zoxide init bash)"
 
 # Created by `pipx` on 2026-06-18 18:11:56
-export PATH="$PATH:/home/athul/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export SUDO_PROMPT="$(tput setaf 1 bold)Password:$(tput sgr0) "
