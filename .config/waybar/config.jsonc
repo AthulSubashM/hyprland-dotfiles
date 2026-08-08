@@ -99,11 +99,10 @@
     "format": "",
     "tooltip-format": "Brightness: {percent}%",
     "states": {
-      "dim": 0,
-      "low": 20,
-      "medium": 40,
+      "low": 0,
+      "medium": 30,
       "high": 60,
-      "full": 80,
+      "full": 90,
     },
     "backlight/slider": {
       "orientation": "horizontal",
@@ -213,8 +212,8 @@
     // "scroll-step": 1, // %, can be a float
     "format": "{icon}",
     "format-bluetooth": " 󱡏 ",
-    "format-bluetooth-muted": " 󱡐 ",
-    "format-muted": " ",
+    "format-bluetooth-muted": "󰝟󱡐",
+    "format-muted": "󰝟",
     "format-source": "  ",
     "format-source-muted": " ",
     "tooltip-format": "{desc}\t{volume}%",

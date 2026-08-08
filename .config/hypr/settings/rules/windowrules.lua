@@ -92,7 +92,12 @@ hl.window_rule({
 	size = { "monitor_w * 0.4", "monitor_h * 0.5" },
 	move = { "monitor_w * 0.3", "monitor_h * 0.25" },
 })
-
+-- Mark Text notes
+hl.window_rule({
+	name = "notes-workspace",
+	match = { class = "marktext" },
+	workspace = "special:S",
+})
 -- Rules for notes menu
 hl.window_rule({
 	name = "notes-menu",

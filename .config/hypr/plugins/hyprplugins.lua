@@ -7,6 +7,9 @@ hl.config({
 			bar_blur = 1,
 			enabled = 0,
 		},
+		gloview = {
+			show_special = 1,
+		},
 	},
 })
 

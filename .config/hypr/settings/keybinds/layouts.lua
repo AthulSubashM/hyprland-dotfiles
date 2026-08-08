@@ -52,7 +52,7 @@ hl.bind(
 	"SUPER + J",
 	layout_bind({
 		scrolling = hl.dsp.layout("swapcol r"), -- Scrolling: swap column with left one
-		dwindle = hl.dsp.layout("toggleplit"), -- Dwindle: swap window split
+		dwindle = hl.dsp.layout("togglesplit"), -- Dwindle: swap window split
 	})
 )
 
