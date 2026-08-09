@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "../wal/colors/colors.css";
 
 window.background.maximized.tiled grid menubar {
   background: alpha(@color1, 0.8);

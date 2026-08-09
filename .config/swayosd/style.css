@@ -1,4 +1,4 @@
-@import url("../../.cache/wal/colors-waybar.css");
+@import url("../wal/colors/colors.css");
 
 window#osd {
   border-radius: 999px;

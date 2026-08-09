@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "../wal/colors/colors.css";
 
 window.pavucontrol-window notebook header {
   background: alpha(@color1, 0.8);
