@@ -11,7 +11,7 @@ set -euo pipefail
 # Get this script directory
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 # Target directory to link configerations to
-TARGET_DIR="$HOME/dotfiles"
+TARGET_DIR="$HOME/.config"
 mkdir -p "$TARGET_DIR"
 # Backup directory for existing configurations
 BKP="$HOME/.local/share/dotfiles/backups_$(date +%Y%m%d_%H%M%S)/.config/"
