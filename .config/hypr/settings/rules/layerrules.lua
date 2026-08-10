@@ -29,3 +29,10 @@ hl.layer_rule({
 	-- 2 = interactive on lockscreen according to your docs
 	above_lock = 2,
 })
+
+hl.layer_rule({
+	name = "notifications",
+	match = { namespace = "notifications" },
+	blur = true,
+	ignore_alpha = 0.5,
+})

@@ -13,7 +13,12 @@ local font = "Open Sans"
 hl.config({
 	general = {
 		gaps_in = 2,
-		gaps_out = 0,
+		gaps_out = {
+			top = 40,
+			right = 4,
+			bottom = 4,
+			left = 4,
+		},
 		border_size = 2,
 		-- col.active_border = rgba(918a97aa),
 		-- no_border_on_floating = true,
@@ -100,6 +105,7 @@ hl.config({
 			font_size = 11,
 			font_weight_active = "semibold",
 			gaps_in = 1,
+			gaps_out = 0,
 			gradients = true,
 			height = 20,
 			indicator_height = 0,

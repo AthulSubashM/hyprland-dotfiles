@@ -46,7 +46,7 @@ hl.window_rule({
 	match = { class = "^(blueman-manager)$" },
 	float = true,
 	size = { "monitor_w * 0.3", "monitor_h * 0.4" },
-	move = { "monitor_w * 0.698", "monitor_h * 0.037" },
+	move = { "monitor_w * 0.698", "monitor_h * 0.038" },
 	animation = "slide",
 	border_size = 0,
 	opacity = "0.9",
@@ -112,7 +112,12 @@ hl.window_rule({
 -- Note: 'match' is the correct property for workspace rules in 0.55+
 hl.workspace_rule({
 	workspace = "w[tv1]",
-	gaps_out = 0,
+	gaps_out = {
+		top = 40,
+		right = 0,
+		bottom = 0,
+		left = 0,
+	},
 	gaps_in = 0,
 })
 hl.workspace_rule({

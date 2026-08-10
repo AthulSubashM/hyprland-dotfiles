@@ -1,4 +1,9 @@
-# Colors
-background-color={color2}
-text-color={foreground}
-border-color={color10}
+# colors
+background-color={color2}ff
+text-color={foreground}ff
+border-color={color10}ff
+
+[app-name="keybind"]
+background-color={color1}88
+text-color={foreground}ff
+border-color={color1}88

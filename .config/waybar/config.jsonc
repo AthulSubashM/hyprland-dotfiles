@@ -1,7 +1,8 @@
 {
-  "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
+  "exclusive": false,
+  "layer": "top",
 
   "modules-left": ["group/left", "mpris"],
   "modules-right": ["group/right"],
@@ -59,6 +60,7 @@
       "transition-duration": 600,
       "transition-to-left": true,
       "click-to-reveal": true,
+      "start-expanded": true,
     },
     "modules": [
       "custom/expand",
@@ -74,6 +76,7 @@
       "transition-duration": 600,
       "transition-left-to-right": false,
       "click-to-reveal": true,
+      "start-expanded": true,
     },
     "modules": ["custom/tray", "custom/endpoint", "custom/colorpicker", "tray"],
   },
@@ -110,7 +113,7 @@
   },
 
   "battery": {
-    "interval": 30,
+    "interval": 5,
     "states": {
       "good": 90,
       "warning": 60,
@@ -128,6 +131,7 @@
     "format-icons": ["", "", "", "", "", ""],
     "events": {
       "on-discharging-critical": "notify-send -u critical -t 5000 'Battery Critical!' 'Your battery level is low.'",
+      "on-discharging-verycritical": "notify-send -u critical 'PLUG IN!!!!'",
     },
   },
   "bluetooth": {

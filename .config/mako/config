@@ -2,9 +2,23 @@ include=~/.cache/wal/colors-mako
 
 max-history=100
 default-timeout=5000
-
-
-# Styles
+margin=40, 4, 0, 0
 font=Open Sans 11
-
 border-radius=8
+
+[app-name="keybind"]
+anchor=top-left
+margin= 0, 0, 0, 500
+border-radius= 0,0,8,8
+width=100
+height=50
+text-alignment=center
+default-timeout=500
+history=0
+
+[app-name="keybind" urgency=low]
+width=100
+
+[app-name="keybind" urgency=normal]
+width=200
+
