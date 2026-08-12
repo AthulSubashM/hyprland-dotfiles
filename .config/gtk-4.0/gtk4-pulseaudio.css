@@ -27,6 +27,9 @@ window.pavucontrol-window notebook header tabs tab:checked {
 window.pavucontrol-window notebook stack {
   background: alpha(@color1, 0.6);
 }
+window.pavucontrol-window notebook stack box {
+  padding: 0 2px;
+}
 window.pavucontrol-window
   notebook
   stack
@@ -42,6 +45,7 @@ window.pavucontrol-window notebook stack box box button {
   background-color: alpha(@color2, 0.8);
   background-image: none;
   color: #ffffff;
+  margin: 10px 2px;
 }
 window.pavucontrol-window notebook stack combobox popover {
   background-color: none;
@@ -66,6 +70,7 @@ window.pavucontrol-window notebook stack combobox popover modelbutton:hover {
 window.pavucontrol-window notebook stack scrolledwindow box scale trough,
 window.pavucontrol-window notebook stack scrolledwindow box progressbar trough {
   background-color: alpha(@color7, 0.4);
+  margin-top: 20px;
 }
 window.pavucontrol-window
   notebook
@@ -98,6 +103,7 @@ window.pavucontrol-window
   trough
   progress {
   background-color: @color5;
+  padding-top: 8px;
 }
 window.pavucontrol-window notebook stack scrolledwindow box scale marks {
   color: @foreground;

@@ -4,6 +4,19 @@ window.background.maximized.tiled grid menubar {
   background: alpha(@color1, 0.8);
   color: #ffffff;
   border: none;
+  font-size: 10pt;
+  padding: 4px;
+}
+window.background.maximized.tiled grid menubar menuitem {
+  padding: 4px 40px;
+}
+window.background.maximized.tiled grid menubar menuitem decoration {
+  border: none;
+  box-shadow: none;
+}
+window.background.maximized.tiled grid menubar menuitem window menu {
+  padding: 4px;
+  border-radius: 10px;
 }
 window.background.maximized.tiled grid menubar menuitem window menu,
 window.background.maximized.tiled
@@ -19,13 +32,27 @@ window.background.maximized.tiled
 window.background.maximized.tiled grid menubar menuitem:hover {
   background-image: none;
   background-color: @color5;
+  border-radius: 6px 6px 0 0;
   box-shadow: none;
   color: #ffffff;
+}
+
+window.background.maximized.tiled grid toolbar separator {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
 }
 
 window.background.maximized.tiled grid toolbar,
 window.background.maximized.tiled grid scrolledwindow treeview {
   background: alpha(@color1, 0.6);
+  padding: 10px;
+}
+window.background.maximized.tiled
+  grid
+  scrolledwindow
+  treeview#ManagerDeviceList {
+  padding-left: 25px;
 }
 window.background.maximized.tiled grid scrolledwindow {
   border: none;
@@ -49,3 +76,27 @@ window.background.maximized.tiled grid toolbar toolitem switch slider {
 window.background.maximized.tiled grid scrolledwindow + box {
   background: alpha(@color1, 0.6);
 }
+
+/* Thunar */
+window.thunar grid notebook widget.view {
+  border-radius: 10px;
+  background-color: @color1;
+}
+window.thunar grid notebook scrolledwindow {
+  border: none;
+  background: alpha(@color1, 0.6);
+}
+
+window.thunar grid toolbar toolitem widget entry {
+  background: alpha(@color1, 1);
+  border-radius: 6px;
+}
+window.thunar grid widget {
+  background: alpha(@color2, 0.8);
+}
+window.thunar scrollbar {
+  border-radius: 10px;
+  margin-top: 2px;
+}
+
+@define-color theme_selected_bg_color @color2;

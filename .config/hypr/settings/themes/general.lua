@@ -37,6 +37,8 @@ hl.config({
 		rounding = 5,
 		rounding_power = 2,
 
+		dim_special = 0.5,
+
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 0.98,
 		inactive_opacity = 0.85,
@@ -44,9 +46,11 @@ hl.config({
 
 		shadow = {
 			enabled = true,
-			range = 4,
+			range = 16,
+			offset = { 0, 4 },
 			render_power = 3,
-			color = 0xee1a1a1a,
+			color = { colors = { "rgba(1a1a1a88)", "rgba(00000033)" }, angle = 45 },
+			-- color = wal.background,
 			-- ignore_window = false,
 		},
 
@@ -58,6 +62,9 @@ hl.config({
 			ignore_opacity = true,
 			xray = false,
 			popups = true,
+		},
+		motion_blur = {
+			enabled = true,
 		},
 	},
 
@@ -86,8 +93,8 @@ hl.config({
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
 		font_family = font,
-		-- animate_mouse_windowdragging = true
-		-- animate_manual_resizes = true
+		-- animate_mouse_windowdragging = true,
+		-- animate_manual_resizes = true,
 		-- enable_swallow = true
 		-- swallow_regex = ^(kitty)$
 	},
@@ -96,7 +103,7 @@ hl.config({
 		col = { border_active = wal.color0 },
 
 		auto_group = false,
-		drag_into_group = 1,
+		drag_into_group = 2,
 		merge_groups_on_drag = false,
 		merge_groups_on_groupbar = true,
 

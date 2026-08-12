@@ -45,12 +45,13 @@ hl.window_rule({
 	name = "blueman",
 	match = { class = "^(blueman-manager)$" },
 	float = true,
-	size = { "monitor_w * 0.3", "monitor_h * 0.4" },
-	move = { "monitor_w * 0.698", "monitor_h * 0.038" },
+	size = { "monitor_w * 0.25", "monitor_h * 0.5" },
+	move = { "monitor_w * 0.748", "monitor_h * 0.036" },
 	animation = "slide",
 	border_size = 0,
 	opacity = "0.9",
 	opaque = false,
+	rounding = 10,
 })
 hl.window_rule({
 	name = "overskride",
@@ -67,12 +68,13 @@ hl.window_rule({
 	name = "pavucontrol",
 	match = { class = "^(org.pulseaudio.pavucontrol)$" },
 	float = true,
-	size = { "monitor_w * 0.3", "monitor_h * 0.3" },
-	move = { "monitor_w * 0.699", "monitor_h * 0.037" },
+	size = { "monitor_w * 0.25", "monitor_h * 0.5" },
+	move = { "monitor_w * 0.748", "monitor_h * 0.036" },
 	animation = "slide",
 	border_size = 0,
 	opacity = "0.9",
 	opaque = false,
+	rounding = 10,
 })
 hl.window_rule({
 	name = "pwvucontrol",
