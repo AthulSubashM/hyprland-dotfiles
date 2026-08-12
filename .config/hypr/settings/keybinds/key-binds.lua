@@ -3,6 +3,8 @@ Mod = "SUPER"
 require("settings.keybinds.mouse")
 require("settings.keybinds.screen-binds")
 require("settings.keybinds.volume-binds")
+
+local sub = require("settings.keybinds.submap_binds")
 local utils = require("settings.keybinds.utils")
 
 --------------------
@@ -66,10 +68,18 @@ local function funkey(key, fun)
 	end)
 end
 
+local function subkey(key, fun)
+	hl.bind(Mod .. "+" .. key, function()
+		utils.notify(key)
+		sub.submap(key, fun)
+	end)
+end
+
 --------------------------
 --    SYSTEM CONTROLS   --
 --------------------------
-winkey("C", "close")
+funkey("C", utils.close_and_push)
+funkey("Z", utils.undo_close)
 winkey("SHIFT + C", "kill")
 funkey("CTRL + C", utils.kill_workspace)
 execkey("+SHIFT + R", "hyprctl reload")
@@ -77,21 +87,15 @@ execkey("+SHIFT + R", "hyprctl reload")
 hl.bind("Caps_Lock", hl.dsp.exec_cmd("swayosd-client --caps-lock"))
 hl.bind("Num_Lock", hl.dsp.exec_cmd("swayosd-client --num-lock"))
 
--- Zoom in, out & reset
--- bind = $mod CTRL, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')
--- bind = $mod CTRL, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')
--- bind = $mod CTRL, 0, exec, hyprctl -q keyword cursor:zoom_factor 1
--- binde = $mod CTRL, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')
--- binde = $mod CTRL, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')
---
 ----------------------
 --    MENU BINDS    --
 ----------------------
 execkey("N", "marktext")
 execkey("M", "~/.config/hypr/scripts/dmenu/man_pages.sh")
-execkey("Z", "~/.config/hypr/scripts/dmenu/kill_process.sh")
+execkey("ALT + X", "~/.config/hypr/scripts/dmenu/kill_process.sh")
 execkey("ALT + M", "~/.config/hypr/scripts/dmenu/arch_wiki_search.sh")
-execkey("R", "~/.config/hypr/scripts/rename_workspace.sh")
+execkey("ALT + R", "~/.config/hypr/scripts/rename_workspace.sh")
+
 -----------------------
 --    APPLICATIONS   --
 -----------------------
@@ -137,14 +141,15 @@ grpkey("G", "toggle")
 grpkey("ALT + Tab", "next")
 grpkey("CTRL+  Tab", "prev")
 
--- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
 -- Resize windows
+subkey("R", "resize")
 
 winkey("minus", "resize", { x = -200, y = 0, relative = true })
 winkey("equal", "resize", { x = 200, y = 0, relative = true })
 winkey("SHIFT + equal", "resize", { x = 0, y = -200, relative = true })
 winkey("SHIFT + minus", "resize", { x = 0, y = 200, relative = true })
 
+-- Mouse: 272:left, 273:right, 274:middle, 275:button4, 276:button5
 hl.bind(Mod .. " + mouse:275", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
 hl.bind(Mod .. " + mouse:276", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
 --

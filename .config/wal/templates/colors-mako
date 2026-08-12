@@ -7,3 +7,11 @@ border-color={color10}ff
 background-color={color1}88
 text-color={foreground}ff
 border-color={color1}88
+
+[app-name="submap"]
+background-color={color5}ff
+border-color={color5}ff
+
+[app-name="submap-tooltip"]
+background-color={color5}88
+border-color={color5}88

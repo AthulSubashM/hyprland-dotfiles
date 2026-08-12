@@ -17,8 +17,40 @@ default-timeout=500
 history=0
 
 [app-name="keybind" urgency=low]
+width=60
+margin=0, 0, 0, 520
+[app-name="keybind" urgency=normal]
 width=100
 
-[app-name="keybind" urgency=normal]
+[app-name="keybind" urgency=critical]
 width=200
+margin=0, 0, 0, 450
+
+[app-name="submap"]
+anchor=top-center
+border-radius= 0,0,15,15
+width=220
+height=100
+text-alignment=center
+ignore-timeout=1
+default-timeout=0
+history=0
+font=Open Sans 12
+padding=8
+margin=0
+
+[app-name="submap" urgency=critical]
+ignore-timeout=0
+default-timeout=1
+
+[app-name="submap-tooltip"]
+anchor=center
+border-radius=30
+width=300
+height=200
+text-alignment=center
+default-timeout=1500
+margin= 800,0, 0,0
+history=0
+font=Open Sans 13
 
