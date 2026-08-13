@@ -9,7 +9,7 @@
     "Noto Sans Medium", "CodeNewRoman Nerd Font Propo", "Symbols Nerd Font",
     "Nerd Font", sans-serif;
   font-weight: 600;
-  font-size: 11pt;
+  font-size: 15px;
   background: transparent;
 }
 #left {
@@ -154,9 +154,10 @@ tooltip {
 }
 #clock {
   padding: 0px 5px;
+  font-weight: 700;
   color: @white;
   transition: all 0.3s ease;
-  font-size: 10pt;
+  font-size: 0.9em;
 }
 #custom-colorpicker {
   padding: 0 8px;
@@ -184,7 +185,7 @@ tooltip {
   padding-left: 8px;
 }
 #custom-hyprsunset label {
-  font-size: 9pt;
+  font-size: 0.8em;
   padding-top: 1px;
 }
 #custom-hyprsunset.active label {
@@ -216,7 +217,7 @@ tooltip {
 #cpu,
 #memory,
 #temperature {
-  font-size: 10pt;
+  font-size: 0.9em;
   padding: 0px 5px;
   transition: all 0.3s ease;
   color: @white;
@@ -229,9 +230,9 @@ tooltip {
 }
 
 #mpris {
-  font-size: 10pt;
+  font-size: 0.9em;
   padding: 0 15px;
-  margin-left: 120px;
+  margin-left: 40px;
   margin-bottom: 6px;
   border-radius: 0 0 10px 10px;
   background: alpha(@color1, 0.6);
@@ -246,7 +247,7 @@ tooltip {
 }
 
 #group-expand,
-#grounp-tray {
+#group-tray {
   transition: all 0.3s ease;
   padding: 2px;
 }
@@ -296,7 +297,7 @@ window#waybar.empty #window {
   padding: 1px 0;
 }
 #workspaces button label {
-  font-size: 8pt;
+  font-size: 0.7em;
 }
 #workspaces button {
   color: @white;
@@ -324,7 +325,7 @@ window#waybar.empty #window {
 @keyframes blink {
   to {
     color: black;
-    font-size: 13pt;
+    font-size: 1.2em;
   }
 }
 @keyframes slideDown {

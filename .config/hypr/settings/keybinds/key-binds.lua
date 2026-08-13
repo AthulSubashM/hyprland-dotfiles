@@ -239,7 +239,7 @@ funkey("TAB", hl.plugin.gloview.toggle)
 --    POWER OPTIONS   --
 ------------------------
 execkey("ALT+CTRL+SHIFT+X", "shutdown now")
-execkey("SHIFT+H", "systemctl hibernate && hyprlock")
+execkey("SHIFT+H", "systemctl hibernate")
 execkey("X", "~/.config/hypr/scripts/dmenu/power_menu.sh")
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd("wlogout"))
 execkey("L", "hyprlock")
