@@ -138,8 +138,8 @@ execkey("SHIFT + V", "cliphist list | " .. menu .. " --dmenu | cliphist decode |
 --------------------------
 -- Groups
 grpkey("G", "toggle")
-grpkey("ALT + Tab", "next")
-grpkey("CTRL+  Tab", "prev")
+grpkey("ALT + G", "next")
+grpkey("CTRL+  G", "prev")
 
 -- Resize windows
 subkey("R", "resize")

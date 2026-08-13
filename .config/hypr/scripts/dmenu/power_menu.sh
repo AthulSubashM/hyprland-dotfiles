@@ -26,10 +26,10 @@ case "$CHOICE" in
   hyprshutdown -t 'Rebooting' --post-cmd 'systemctl reboot'
   ;;
 "󰤄 Hibernate")
-  systemctl hibernate && hyprlock
+  systemctl hibernate
   ;;
 "󰤁 Suspend")
-  systemctl suspend && hyprlock
+  systemctl suspend
   ;;
 # "󰌾 Lock")
 #   hyprlock
