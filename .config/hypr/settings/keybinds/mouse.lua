@@ -35,17 +35,33 @@ hl.gesture({
 	fingers = 3,
 	direction = "up",
 	action = function()
-		hl.exec_cmd("fuzzel")
+		hl.exec_cmd("pkill fuzzel")
 	end,
 })
 hl.gesture({
 	fingers = 3,
 	direction = "down",
 	action = function()
-		hl.exec_cmd("firefox")
+		hl.exec_cmd("fuzzel")
 	end,
 })
-
+-- Volume and Brightness
+local volume_gesture = function(change)
+	hl.exec_cmd("swayosd-client --output-volume " .. change)
+end
+hl.gesture({
+	fingers = 3,
+	mods = "SUPER",
+	direction = "vertical",
+	action = {
+		start = function(e)
+			volume_gesture(-0.25 * e.delta.y)
+		end,
+		update = function(e)
+			volume_gesture(-0.25 * e.delta.y)
+		end,
+	},
+})
 hl.device({
 	name = "epic-mouse-v1",
 	sensitivity = -0.5,

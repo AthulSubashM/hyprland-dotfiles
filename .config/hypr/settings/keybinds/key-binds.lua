@@ -17,7 +17,7 @@ local fileManager = terminal .. " -e yazi"
 local GUIfileManager = "thunar"
 -- local menu = "wofi --show drun -n
 local menu = "fuzzel"
-local browser = "firefox"
+local browser = 'firefox --no-remote --profile "$HOME/.mozilla/firefox/5iflnsw1.default-release/"'
 local browser2 = "brave-origin"
 local taskManager = terminal2 .. " -T btop -e btop"
 -- local local notifications = "swaync-client -t -sw
@@ -100,8 +100,8 @@ execkey("ALT + R", "~/.config/hypr/scripts/rename_workspace.sh")
 --    APPLICATIONS   --
 -----------------------
 -- Core Applications
-execkey("E", fileManager)
-execkey("ALT + E", GUIfileManager)
+execkey("ALT + E", fileManager)
+execkey("E", GUIfileManager)
 execkey("T", terminal2)
 execkey("ALT + T", terminal)
 execkey("space", menu)
@@ -213,8 +213,8 @@ winkey("SHIFT + S", "move", { workspace = "special:S" })
 -- Scroll through existing workspaces with Mod + scroll
 hl.bind(Mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(Mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(Mod .. " + CTRL + right", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(Mod .. " + CTRL + left", hl.dsp.focus({ workspace = "e-1" }))
+dspkey("CTRL + right", "focus", { workspace = "e+1" })
+dspkey("CTRL + left", "focus", { workspace = "e-1" })
 
 funkey(
 	"J",
@@ -238,7 +238,7 @@ funkey("TAB", hl.plugin.gloview.toggle)
 ------------------------
 --    POWER OPTIONS   --
 ------------------------
-execkey("ALT+CTRL+SHIFT+X", "shutdown now")
+execkey("CTRL+SHIFT+X", "shutdown now")
 execkey("SHIFT+H", "systemctl hibernate")
 execkey("X", "~/.config/hypr/scripts/dmenu/power_menu.sh")
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd("wlogout"))

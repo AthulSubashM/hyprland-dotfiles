@@ -7,16 +7,27 @@ local key_symbols = {
 	up = "↑",
 	down = "↓",
 	["return"] = "󰌑",
-	space = "␣",
+	-- space = "␣",
 	backspace = "⌫",
 	escape = "ESC",
 	period = ".",
 	comma = ",",
+	-- minus = "-",
+	-- equal = "=",
 }
+
+-- sub key symbols in key string
+local function key_sub(key)
+	key = tostring(key)
+	for k, s in pairs(key_symbols) do
+		key = string.gsub(key, k, s)
+	end
+	return key
+end
 
 -- notify keybind
 local function notify(key)
-	key = key_symbols[key] or key
+	key = key_sub(key)
 	-- Use 'low' urgency for short keys, 'normal' for long keys
 	local urgency_flag = (#tostring(key) > 3) and "critical" or "normal"
 
@@ -31,7 +42,7 @@ end
 
 -- notify short keybind
 local function short_notify(key)
-	key = key_symbols[key] or key
+	key = key_sub(key)
 
 	hl.exec_cmd(
 		string.format('notify-send -a "keybind" -u "low" -h string:x-canonical-private-synchronous:keybind "%s"', key)
@@ -180,6 +191,11 @@ local function game_mode()
 		},
 	})
 	hl.exec_cmd("hyprctl notify 1 3000 'rgb(40a02b)' 'Gamemode [ON]'")
+end
+
+-- Battery Saver mode
+local function power_saver()
+	local mode = (hl.get_config(""))
 end
 
 return {
