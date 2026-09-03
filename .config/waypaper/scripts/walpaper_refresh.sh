@@ -4,6 +4,12 @@ pkill -x swayosd-server
 swayosd-server &
 touch ~/.config/waybar/style.css
 
+if [ -f "$1" ]; then
+  ln -sf "$1" "$HOME/.config/waypaper/current_wallpaper"
+else
+  echo "Add wallpaper as agrument"
+fi
+
 nm-sidebar --reload-css &
 makoctl reload &
 
