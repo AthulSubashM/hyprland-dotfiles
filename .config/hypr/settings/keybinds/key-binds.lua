@@ -234,7 +234,7 @@ funkey(
 
 funkey("period", utils.switch_layouts)
 
-funkey("TAB", hl.plugin.gloview.toggle)
+-- funkey("TAB", hl.plugin.gloview.toggle)
 ------------------------
 --    POWER OPTIONS   --
 ------------------------

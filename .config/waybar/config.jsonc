@@ -4,7 +4,7 @@
   "exclusive": false,
   "layer": "top",
 
-  "modules-left": ["group/left", "mpris"],
+  "modules-left": ["group/left", "group/mpris"],
   "modules-right": ["group/right"],
   "modules-center": ["clock"],
 
@@ -27,6 +27,7 @@
       "bluetooth",
       "group/audio",
       "group/brightness",
+      // "custom/asus-brightness",
       "custom/hyprsunset",
       "group/batteryoptions",
       "custom/power",
@@ -52,7 +53,7 @@
       "transition-duration": 500,
       "children-class": "drawer-child",
     },
-    "modules": ["backlight", "backlight/slider"],
+    "modules": ["backlight", "backlight/slider", "custom/asus-brightness"],
   },
   "group/expand": {
     "orientation": "horizontal",
@@ -69,6 +70,16 @@
       "temperature",
       "custom/endpoint",
     ],
+  },
+  "group/mpris": {
+    "orientation": "horizontal",
+    "modules": ["custom/mpris-button", "mpris"],
+    "drawer": {
+      "transition-duration": 600,
+      "transition-to-left": true,
+      "click-to-reveal": true,
+      "start-expanded": false,
+    },
   },
   "group/tray": {
     "orientation": "horizontal",
@@ -249,6 +260,21 @@
   },
 
   // Custom
+  "custom/asus-brightness": {
+    "format": "󰍹 ",
+    "tooltip": true,
+    "return-type": "json",
+    "exec": "~/.config/hypr/scripts/asus_brightness_mako.sh get",
+    "signal": 8,
+    "on-scroll-up": "~/.config/hypr/scripts/asus_brightness_mako.sh +5",
+    "on-scroll-down": "~/.config/hypr/scripts/asus_brightness_mako.sh -5",
+    // "states": {
+    //   "low": 0,
+    //   "medium": 30,
+    //   "high": 60,
+    //   "full": 90,
+    // },
+  },
   "custom/colorpicker": {
     "format": "{}",
     "return-type": "json",
@@ -274,6 +300,9 @@
     "on-click": "~/.config/waybar/scripts/hyprsunset.sh toggle",
     "on-scroll-up": "~/.config/waybar/scripts/hyprsunset.sh up",
     "on-scroll-down": "~/.config/waybar/scripts/hyprsunset.sh down",
+  },
+  "custom/mpris-button": {
+    "format": "󰝚",
   },
   "custom/notification": {
     "tooltip": false,

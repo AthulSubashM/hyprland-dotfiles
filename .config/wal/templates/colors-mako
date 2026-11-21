@@ -15,3 +15,8 @@ border-color={color5}ff
 [app-name="submap-tooltip"]
 background-color={color5}88
 border-color={color5}88
+
+[app-name="asus-brightness"]
+background-color={color1}88
+border-color={color1}88
+progress-color=over {color9}88
